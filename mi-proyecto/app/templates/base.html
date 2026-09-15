@@ -27,8 +27,8 @@
             </div>
 
             <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-700">
-                <a href="#" class="text-emerald-800 border-b-2 border-emerald-800 pb-1">INICIO</a>
-                <a href="#" class="hover:text-emerald-800 transition">PRODUCTO</a>
+                <a href="{{ url_for('clientes.home') }}" class="hover:text-emerald-800 transition">INICIO</a>
+                <a href="{{ url_for('clientes.producto') }}" class="hover:text-emerald-800 transition">PRODUCTO</a>
                 <a href="#" class="hover:text-emerald-800 transition">NOSOTROS</a>
                 <a href="#" class="hover:text-emerald-800 transition">GALERIA</a>
             </nav>

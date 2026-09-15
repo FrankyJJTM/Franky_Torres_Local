@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Agrofrutos - Productos{% endblock %}
+
+{% block content %}
+<!-- BANNER SUPERIOR DE PRODUCTOS -->
+<section class="relative bg-emerald-950 text-white py-24 overflow-hidden">
+    <!-- Imagen de fondo con opacidad -->
+    <div class="absolute inset-0 z-0">
+        <img src="{{ url_for('static', filename='img/banner-productos.jpg') }}" alt="Productos Agrofrutos" class="w-full h-full object-cover opacity-30">
+        <div class="absolute inset-0 bg-emerald-950/60"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-serif tracking-widest uppercase font-light">PRODUCTO</h1>
+    </div>
+</section>
+
+<!-- SECCIÓN CATÁLOGO CON FILTRO LATERAL -->
+<section class="py-12 bg-slate-100 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            
+            <!-- BARRA LATERAL: CATEGORÍAS -->
+            <aside class="lg:col-span-1">
+                <div class="bg-emerald-950 text-white rounded-3xl p-5 shadow-lg space-y-4">
+                    <h2 class="text-center font-bold text-sm tracking-widest uppercase bg-emerald-900/80 py-2.5 rounded-full mb-6">
+                        CATEGORÍAS
+                    </h2>
+
+                    <!-- Lista de Categorías -->
+                    <nav class="space-y-3">
+                        <a href="#" class="flex items-center justify-between bg-emerald-600/60 text-white font-semibold px-4 py-3 rounded-2xl border border-emerald-500/40 shadow-sm transition">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-amber-400 text-xs">
+                                    <i class="fa-solid fa-seedling"></i>
+                                </span>
+                                <span class="text-xs uppercase tracking-wider font-bold">PALTA</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </a>
+
+                        <a href="#" class="flex items-center justify-between bg-emerald-900/40 hover:bg-emerald-800/50 text-slate-200 font-semibold px-4 py-3 rounded-2xl border border-emerald-800/40 transition">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-full bg-emerald-900 flex items-center justify-center text-amber-400 text-xs">
+                                    <i class="fa-solid fa-sun"></i>
+                                </span>
+                                <span class="text-xs uppercase tracking-wider font-bold">MANGO</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </a>
+
+                        <a href="#" class="flex items-center justify-between bg-emerald-900/40 hover:bg-emerald-800/50 text-slate-200 font-semibold px-4 py-3 rounded-2xl border border-emerald-800/40 transition">
+                            <div class="flex items-center gap-3">
+                                <span class="w-8 h-8 rounded-full bg-emerald-900 flex items-center justify-center text-amber-400 text-xs">
+                                    <i class="fa-solid fa-lemon"></i>
+                                </span>
+                                <span class="text-xs uppercase tracking-wider font-bold">MARACUYÁ</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </a>
+                    </nav>
+                </div>
+            </aside>
+
+            <!-- GRILLA DE PRODUCTOS -->
+            <main class="lg:col-span-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    
+                    <!-- Tarjeta 1: Palta Hass -->
+                    <div class="bg-white rounded-3xl p-4 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <div class="h-48 bg-emerald-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+                                <img src="{{ url_for('static', filename='img/palta-hass.png') }}" alt="Palta Hass" class="h-full object-contain p-2">
+                            </div>
+                            <h3 class="font-extrabold text-slate-800 text-lg mb-1">Palta Hass</h3>
+                            <p class="text-slate-500 text-xs leading-relaxed mb-4">
+                                Fruta de piel rugosa y oscura con pulpa cremosa de sabor intenso. Alta resistencia al transporte, ideal para exportación B2B.
+                            </p>
+                        </div>
+                        <button class="w-fit bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition shadow-sm flex items-center gap-2">
+                            AÑADIR <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <!-- Tarjeta 2: Palta Fuerte -->
+                    <div class="bg-white rounded-3xl p-4 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <div class="h-48 bg-emerald-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+                                <img src="{{ url_for('static', filename='img/palta-fuerte.png') }}" alt="Palta Fuerte" class="h-full object-contain p-2">
+                            </div>
+                            <h3 class="font-extrabold text-slate-800 text-lg mb-1">Palta Fuerte</h3>
+                            <p class="text-slate-500 text-xs leading-relaxed mb-4">
+                                Fruta de piel lisa y verde brillante con pulpa suave y ligera. Calidad premium enfocada principalmente en el mercado nacional.
+                            </p>
+                        </div>
+                        <button class="w-fit bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition shadow-sm flex items-center gap-2">
+                            AÑADIR <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <!-- Tarjeta 3: Palta Bacon -->
+                    <div class="bg-white rounded-3xl p-4 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <div class="h-48 bg-emerald-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+                                <img src="{{ url_for('static', filename='img/palta-bacon.png') }}" alt="Palta Bacon" class="h-full object-contain p-2">
+                            </div>
+                            <h3 class="font-extrabold text-slate-800 text-lg mb-1">Palta Bacon</h3>
+                            <p class="text-slate-500 text-xs leading-relaxed mb-4">
+                                Piel lisa verde y pulpa ligera baja en grasa. Variedad suave de inicio de temporada.
+                            </p>
+                        </div>
+                        <button class="w-fit bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition shadow-sm flex items-center gap-2">
+                            AÑADIR <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+
+                    <!-- Tarjeta 4: Palta Criolla -->
+                    <div class="bg-white rounded-3xl p-4 shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <div class="h-48 bg-emerald-50 rounded-2xl overflow-hidden mb-4 flex items-center justify-center">
+                                <img src="{{ url_for('static', filename='img/palta-criolla.png') }}" alt="Palta Criolla" class="h-full object-contain p-2">
+                            </div>
+                            <h3 class="font-extrabold text-slate-800 text-lg mb-1">Palta Criolla</h3>
+                            <p class="text-slate-500 text-xs leading-relaxed mb-4">
+                                Piel verde, delgada y muy fácil de pelar. Pulpa acuosa, textura suave y sabor tradicional para consumo inmediato.
+                            </p>
+                        </div>
+                        <button class="w-fit bg-amber-400 hover:bg-amber-500 text-slate-900 font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full transition shadow-sm flex items-center gap-2">
+                            AÑADIR <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </main>
+
+        </div>
+    </div>
+</section>
+{% endblock %}
