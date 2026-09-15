@@ -17,3 +17,7 @@ def nosotros():
 @clientes_bp.route('/galeria')
 def galeria():
     return render_template('clientes/galeria.html')
+
+@clientes_bp.route('/contacto')
+def contacto():
+    return render_template('clientes/form.html')
