@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Agrofrutos - Nosotros{% endblock %}
+
+{% block content %}
+<!-- BANNER SUPERIOR "QUIÉNES SOMOS" -->
+<section class="relative bg-emerald-900 text-white py-20 px-4 text-center overflow-hidden">
+    <!-- Imagen de fondo con overlay -->
+    <div class="absolute inset-0 z-0">
+        <img src="{{ url_for('static', filename='img/banner-nosotros.jpg') }}" alt="Agrofrutos Organicos" class="w-full h-full object-cover opacity-25">
+        <div class="absolute inset-0 bg-emerald-950/70"></div>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto space-y-3">
+        <p class="text-amber-400 text-xs md:text-sm font-semibold tracking-wider">
+            Cooperativa Agraria Agrofrutos Organicos
+        </p>
+        <h1 class="text-3xl md:text-5xl font-bold font-serif tracking-tight">
+            Quiénes somos
+        </h1>
+        <p class="text-slate-200 text-sm md:text-base font-light max-w-xl mx-auto pt-2">
+            Familias que cultivan bienestar,<br>Construyendo un futuro sostenible
+        </p>
+    </div>
+</section>
+
+<!-- SECCIÓN DESCRIPCIÓN + IMAGEN DE PRODUCTORES -->
+<section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Texto Descriptivo -->
+            <div class="space-y-6 text-slate-700 leading-relaxed text-sm md:text-base">
+                <p class="font-medium text-slate-800">
+                    Somos una cooperativa agraria de pequeños productores de Lambayeque, que trabajamos unidos para llevar al mundo la mejor fruta, con calidad, responsabilidad y respeto por la naturaleza.
+                </p>
+                <p class="text-slate-600">
+                    Creemos en la cooperación, en el valor de nuestra gente y en una agricultura sostenible que protege el suelo, el agua y las futuras generaciones.
+                </p>
+            </div>
+
+            <!-- Imagen Productores -->
+            <div class="rounded-3xl overflow-hidden shadow-lg border border-slate-100">
+                <img src="{{ url_for('static', filename='img/productores.jpg') }}" alt="Productores Agrofrutos" class="w-full h-auto object-cover">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN MÉTRICAS / ESTADÍSTICAS -->
+<section class="py-12 bg-slate-50 border-y border-slate-200/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            
+            <!-- Métrica 1 -->
+            <div class="p-4 space-y-2">
+                <div class="text-3xl md:text-4xl font-extrabold text-slate-800">
+                    74 <span class="text-lg md:text-xl font-bold block text-slate-700 mt-1">productores</span>
+                </div>
+                <p class="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
+                    Familias comprometidas con el campo y con el país
+                </p>
+            </div>
+
+            <!-- Métrica 2 -->
+            <div class="p-4 space-y-2">
+                <div class="text-3xl md:text-4xl font-extrabold text-slate-800">
+                    72 ha <span class="text-lg md:text-xl font-bold block text-slate-700 mt-1">de palta hass</span>
+                </div>
+                <p class="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
+                    Cultivos que nos posicionan como referentes en calidad
+                </p>
+            </div>
+
+            <!-- Métrica 3 -->
+            <div class="p-4 space-y-2">
+                <div class="text-3xl md:text-4xl font-extrabold text-slate-800">
+                    3,000 t <span class="text-lg md:text-xl font-bold block text-slate-700 mt-1">de oferta potencial</span>
+                </div>
+                <p class="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
+                    Con capacidad de crecimiento y más oportunidades
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN NUESTRA MISIÓN -->
+<section class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Texto Misión -->
+            <div class="space-y-4">
+                <span class="text-emerald-600 font-semibold text-xs tracking-wider uppercase block">
+                    Nuestra Misión
+                </span>
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 leading-tight">
+                    Impulsar el desarrollo<br>de nuestros productores
+                </h2>
+                <p class="text-slate-600 text-xs md:text-sm leading-relaxed max-w-md pt-2">
+                    A través de la producción y comercialización de frutas orgánicas y de alta calidad promovemos el bienestar de nuestras familias, la competitividad de la región y un futuro más sostenible.
+                </p>
+            </div>
+
+            <!-- Imagen Campo / Cosecha -->
+            <div class="rounded-3xl overflow-hidden shadow-lg border border-slate-100">
+                <img src="{{ url_for('static', filename='img/mision-campo.jpg') }}" alt="Cosecha de palta" class="w-full h-auto object-cover">
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

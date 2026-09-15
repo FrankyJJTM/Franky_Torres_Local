@@ -9,3 +9,7 @@ def home():
 @clientes_bp.route('/producto')
 def producto():
     return render_template('clientes/producto.html')
+
+@clientes_bp.route('/nosotros')
+def nosotros():
+    return render_template('clientes/nosotros.html')
