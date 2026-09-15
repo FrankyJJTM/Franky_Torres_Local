@@ -13,3 +13,7 @@ def producto():
 @clientes_bp.route('/nosotros')
 def nosotros():
     return render_template('clientes/nosotros.html')
+
+@clientes_bp.route('/galeria')
+def galeria():
+    return render_template('clientes/galeria.html')
