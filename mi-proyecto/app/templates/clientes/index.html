@@ -4,32 +4,32 @@
 
 {% block content %}
 <!-- SECCIÓN SLIDER -->
-<section class="relative bg-slate-900 text-white min-h-[520px] flex items-center overflow-hidden">
+<section class="relative bg-slate-900 text-white h-[340px] md:h-[400px] flex items-start overflow-hidden hero-borde-inferior">
     <div class="slider-container absolute inset-0 w-full h-full">
         <!-- Slide 1 -->
-        <div class="slide active absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100">
-            <img src="{{ url_for('static', filename='img/hero1.jpg') }}" alt="Campo agrícola" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+        <div class="slide active absolute inset-0 opacity-100">
+            <img src="{{ url_for('static', filename='img/palta1.jpg') }}" alt="Campo agrícola" class="w-full h-full object-cover">
+            <div class="hero-overlay"></div>
         </div>
         <!-- Slide 2 -->
-        <div class="slide absolute inset-0 transition-opacity duration-700 ease-in-out opacity-0">
-            <img src="{{ url_for('static', filename='img/hero2.jpg') }}" alt="Cosecha de frutas" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
+        <div class="slide absolute inset-0 opacity-0">
+            <img src="{{ url_for('static', filename='img/palta2.jpg') }}" alt="Cosecha de frutas" class="w-full h-full object-cover">
+            <div class="hero-overlay"></div>
         </div>
     </div>
 
     <!-- Texto sobre el Slider -->
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10">
-        <span class="text-amber-400 text-xs font-bold tracking-widest uppercase mb-3 block">
-            Sabor & Frescura de Exportación
+    <div class="relative px-6 sm:px-10 lg:px-16 pt-10 md:pt-14 z-10">
+        <span class="text-amber-400 text-[10px] font-bold tracking-widest uppercase mb-2 block">
+            Sabor &amp; Frescura de Exportación
         </span>
-        <h1 class="text-4xl md:text-6xl font-serif font-bold leading-tight mb-4 max-w-xl">
+        <h1 class="text-2xl md:text-3xl font-serif font-bold leading-snug mb-3 max-w-md">
             NUESTRA TIERRA,<br>TU COSECHA
         </h1>
-        <p class="text-slate-200 text-sm md:text-base max-w-lg mb-8 leading-relaxed font-light">
+        <p class="text-slate-200 text-xs md:text-sm max-w-sm mb-5 leading-relaxed font-light">
             Sostenibilidad, frescura y calidad de exportación en cada fruta cultivada bajo estrictos estándares ecológicos.
         </p>
-        <a href="#productos" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+        <a href="#productos" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-[11px] uppercase tracking-wider px-5 py-2.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
             Conoce nuestros productos <i class="fa-solid fa-arrow-right"></i>
         </a>
     </div>
@@ -62,9 +62,9 @@
             <p class="text-xs md:text-sm text-slate-500 mt-1">Frutas de nuestra tierra, con el mejor sabor y calidad.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
             <!-- Palta -->
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition">
+            <div class="bg-white rounded-2xl card-shadow tarjeta-hover border border-slate-100 overflow-hidden">
                 <div class="relative h-52">
                     <img src="{{ url_for('static', filename='img/palta.jpg') }}" alt="Palta Hass" class="w-full h-full object-cover">
                     <div class="absolute -bottom-4 left-6 w-9 h-9 bg-emerald-800 text-white rounded-full flex items-center justify-center border-2 border-white shadow">
@@ -83,7 +83,7 @@
             </div>
 
             <!-- Mango -->
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition">
+            <div class="bg-white rounded-2xl card-shadow tarjeta-hover border border-slate-100 overflow-hidden">
                 <div class="relative h-52">
                     <img src="{{ url_for('static', filename='img/mango.jpg') }}" alt="Mango" class="w-full h-full object-cover">
                     <div class="absolute -bottom-4 left-6 w-9 h-9 bg-amber-500 text-white rounded-full flex items-center justify-center border-2 border-white shadow">
@@ -102,7 +102,7 @@
             </div>
 
             <!-- Maracuyá -->
-            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition">
+            <div class="bg-white rounded-2xl card-shadow tarjeta-hover border border-slate-100 overflow-hidden">
                 <div class="relative h-52">
                     <img src="{{ url_for('static', filename='img/maracuya.jpg') }}" alt="Maracuyá" class="w-full h-full object-cover">
                     <div class="absolute -bottom-4 left-6 w-9 h-9 bg-amber-500 text-white rounded-full flex items-center justify-center border-2 border-white shadow">

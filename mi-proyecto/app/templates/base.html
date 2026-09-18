@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Agrofrutos{% endblock %}</title>
-    
-    <!-- Tailwind CSS v4 CDN -->
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    
+
+    <!-- Tailwind CSS compilado LOCALMENTE (ya no usamos el CDN) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <!-- CSS Personalizado -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
@@ -26,6 +26,7 @@
                 <span class="font-extrabold text-xl tracking-wider text-emerald-900">AGROFRUTOS</span>
             </div>
 
+            <!-- Menú horizontal: visible desde tablet/escritorio (md en adelante) -->
             <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-700">
                 <a href="{{ url_for('clientes.home') }}" class="hover:text-emerald-800 transition">INICIO</a>
                 <a href="{{ url_for('clientes.producto') }}" class="hover:text-emerald-800 transition">PRODUCTO</a>
@@ -34,9 +35,24 @@
                 <a href="{{ url_for('clientes.registro_productor') }}" class="hover:text-emerald-800 transition">REGISTRO</a>
             </nav>
 
-            <a href="{{ url_for('clientes.contacto') }}" class="bg-emerald-900 hover:bg-emerald-950 text-white font-semibold text-xs tracking-widest px-6 py-2.5 rounded-full transition shadow">
+            <a href="{{ url_for('clientes.contacto') }}" class="hidden md:inline-flex bg-emerald-900 hover:bg-emerald-950 text-white font-semibold text-xs tracking-widest px-6 py-2.5 rounded-full transition shadow">
                 CONTACTO
             </a>
+
+            <!-- Botón hamburguesa: solo visible en celular (oculto desde md) -->
+            <button id="btnMenu" class="md:hidden text-emerald-900 text-2xl">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú desplegable de celular -->
+        <div id="menuMovil" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-3 font-semibold text-sm text-slate-700">
+            <a href="{{ url_for('clientes.home') }}" class="block py-1">INICIO</a>
+            <a href="{{ url_for('clientes.producto') }}" class="block py-1">PRODUCTO</a>
+            <a href="{{ url_for('clientes.nosotros') }}" class="block py-1">NOSOTROS</a>
+            <a href="{{ url_for('clientes.galeria') }}" class="block py-1">GALERIA</a>
+            <a href="{{ url_for('clientes.registro_productor') }}" class="block py-1">REGISTRO</a>
+            <a href="{{ url_for('clientes.contacto') }}" class="block bg-emerald-900 text-white text-center py-2.5 rounded-full mt-2">CONTACTO</a>
         </div>
     </header>
 
