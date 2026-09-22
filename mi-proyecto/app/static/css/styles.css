@@ -28,3 +28,25 @@
     box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.12);
     transform: translateY(-4px);
 }
+
+/* ===== Íconos circulares de la sección "Nuestros valores" (página Nosotros) ===== */
+.valor-icono {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin: 0 auto 1rem auto;
+    transition: transform 0.3s ease;
+}
+
+.valor-item:hover .valor-icono {
+    transform: translateY(-4px) scale(1.05);
+}
+
+.valor-icono.verde-oscuro { background-color: #052e16; color: #fff; }
+.valor-icono.verde        { background-color: #14532d; color: #fff; }
+.valor-icono.ambar        { background-color: #f59e0b; color: #fff; }
+.valor-icono.crema        { background-color: #fefce8; color: #92400e; border: 1px solid #fde68a; }

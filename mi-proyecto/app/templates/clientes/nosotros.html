@@ -41,7 +41,7 @@
 
             <!-- Imagen Productores -->
             <div class="rounded-3xl overflow-hidden shadow-lg border border-slate-100">
-                <img src="{{ url_for('static', filename='img/productores.jpg') }}" alt="Productores Agrofrutos" class="w-full h-auto object-cover">
+                <img src="{{ url_for('static', filename='img/nosotros/productores.jpg') }}" alt="Productores Agrofrutos" class="w-full h-auto object-cover">
             </div>
 
         </div>
@@ -87,27 +87,110 @@
     </div>
 </section>
 
-<!-- SECCIÓN NUESTRA MISIÓN -->
+<!-- SECCIÓN NUESTRA MISIÓN Y VISIÓN -->
 <section class="py-16 bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            
-            <!-- Texto Misión -->
-            <div class="space-y-4">
-                <span class="text-emerald-600 font-semibold text-xs tracking-wider uppercase block">
-                    Nuestra Misión
-                </span>
-                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 leading-tight">
-                    Impulsar el desarrollo<br>de nuestros productores
-                </h2>
-                <p class="text-slate-600 text-xs md:text-sm leading-relaxed max-w-md pt-2">
-                    A través de la producción y comercialización de frutas orgánicas y de alta calidad promovemos el bienestar de nuestras familias, la competitividad de la región y un futuro más sostenible.
+
+        <!-- Encabezado de la sección -->
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center justify-center text-emerald-800 mb-2">
+                <span class="w-8 h-[1px] bg-emerald-800 mr-2"></span>
+                <i class="fa-solid fa-leaf text-sm"></i>
+                <span class="w-8 h-[1px] bg-emerald-800 ml-2"></span>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-950 tracking-wider">NUESTRA MISIÓN Y VISIÓN</h2>
+            <p class="text-xs md:text-sm text-slate-500 mt-1">Los principios que guían nuestro trabajo día a día.</p>
+        </div>
+
+        <!-- Tarjetas Misión / Visión -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Misión -->
+            <div class="bg-emerald-50/70 rounded-3xl p-8 border border-emerald-100 card-shadow tarjeta-hover">
+                <div class="w-14 h-14 rounded-full bg-emerald-800 text-white flex items-center justify-center mb-5 shadow">
+                    <i class="fa-solid fa-bullseye text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-emerald-950 mb-3">Misión</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Impulsar el desarrollo de nustros productores. A traves de la produccion y comercializacion de frutas organicas y de alta calidad promovemos el bienestar de nuestras familisas,la competitividad de la region y un futuro mas sostenible.
                 </p>
             </div>
 
-            <!-- Imagen Campo / Cosecha -->
-            <div class="rounded-3xl overflow-hidden shadow-lg border border-slate-100">
-                <img src="{{ url_for('static', filename='img/mision-campo.jpg') }}" alt="Cosecha de palta" class="w-full h-auto object-cover">
+            <!-- Visión -->
+            <div class="bg-amber-50/70 rounded-3xl p-8 border border-amber-100 card-shadow tarjeta-hover">
+                <div class="w-14 h-14 rounded-full bg-amber-500 text-white flex items-center justify-center mb-5 shadow">
+                    <i class="fa-solid fa-eye text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold text-emerald-950 mb-3">Visión</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Ser reconocidos como una cooperativa líder en la producción y comercialización de frutas orgánicas, generando valor para nuestros socios, clientes y comunidades.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN NUESTROS VALORES -->
+<section class="py-16 bg-slate-50 border-t border-slate-200/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Encabezado de la sección -->
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center justify-center text-emerald-800 mb-2">
+                <span class="w-8 h-[1px] bg-emerald-800 mr-2"></span>
+                <i class="fa-solid fa-leaf text-sm"></i>
+                <span class="w-8 h-[1px] bg-emerald-800 ml-2"></span>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-950 tracking-wider">NUESTROS VALORES</h2>
+            <p class="text-xs md:text-sm text-slate-500 mt-1">Lo que nos define como cooperativa y como equipo.</p>
+        </div>
+
+        <!-- Grilla de 4 valores -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+            <!-- Compromiso -->
+            <div class="valor-item">
+                <div class="valor-icono verde-oscuro">
+                    <i class="fa-solid fa-people-group"></i>
+                </div>
+                <h3 class="font-bold text-slate-800 text-sm mb-1">Compromiso</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">
+                    Nos involucramos al máximo en cada proyecto.
+                </p>
+            </div>
+
+            <!-- Calidad -->
+            <div class="valor-item">
+                <div class="valor-icono verde">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <h3 class="font-bold text-slate-800 text-sm mb-1">Calidad</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">
+                    Ofrecemos productos orgánicos de excelencia para nuestros clientes.
+                </p>
+            </div>
+
+            <!-- Integridad -->
+            <div class="valor-item">
+                <div class="valor-icono ambar">
+                    <i class="fa-solid fa-handshake"></i>
+                </div>
+                <h3 class="font-bold text-slate-800 text-sm mb-1">Integridad</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">
+                    Actuamos con honestidad y transparencia en todo lo que hacemos.
+                </p>
+            </div>
+
+            <!-- Respeto -->
+            <div class="valor-item">
+                <div class="valor-icono crema">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h3 class="font-bold text-slate-800 text-sm mb-1">Respeto</h3>
+                <p class="text-slate-500 text-xs leading-relaxed">
+                    Valoramos a las personas, nuestras comunidades y la naturaleza.
+                </p>
             </div>
 
         </div>
