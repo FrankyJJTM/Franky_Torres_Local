@@ -3,10 +3,9 @@
 {% block title %}Agrofrutos - Galería de Cosecha{% endblock %}
 
 {% block content %}
-<!-- BANNER SUPERIOR DE GALERÍA -->
 <section class="relative bg-emerald-950 text-white py-20 px-4 text-center overflow-hidden">
     <div class="absolute inset-0 z-0">
-        <img src="{{ url_for('static', filename='img/banner-galeria.jpg') }}" alt="Galería Agrofrutos" class="w-full h-full object-cover opacity-25">
+        <img src="{{ url_for('static', filename='img/galeria/paltayfruta.jpg') }}" alt="Galería Agrofrutos" class="w-full h-full object-cover opacity-25">
         <div class="absolute inset-0 bg-emerald-950/70"></div>
     </div>
 
@@ -23,13 +22,11 @@
     </div>
 </section>
 
-<!-- CONTENIDO PRINCIPAL DE LA GALERÍA -->
 <section class="py-16 bg-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
 
-        <!-- BLOQUE 1: PALTA -->
+        <!-- PALTA -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-            <!-- Ficha técnica izquierda -->
             <div class="lg:col-span-4 bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-4">
                 <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-full bg-emerald-800 text-amber-400 flex items-center justify-center font-bold">
@@ -37,7 +34,7 @@
                     </div>
                     <h2 class="text-2xl font-serif font-bold text-slate-900 tracking-wider">PALTA</h2>
                 </div>
-                
+
                 <p class="text-slate-500 text-xs leading-relaxed">
                     Nuestras paltas de variedad Hass son cultivadas bajo estrictos estándares orgánicos en los valles de Lambayeque, garantizando una textura sumamente cremosa, rico sabor y un alto valor nutricional óptimo para exportación.
                 </p>
@@ -56,37 +53,37 @@
                 </a>
             </div>
 
-            <!-- Galería de imágenes derecha -->
-            <div class="lg:col-span-8 space-y-4">
+            <div class="lg:col-span-8 space-y-4 gallery-container">
                 <div class="h-80 md:h-96 rounded-3xl overflow-hidden shadow-sm border border-slate-200">
-                    <img src="{{ url_for('static', filename='img/galeria-palta-main.jpg') }}" alt="Campo de Palta" class="w-full h-full object-cover">
+                    <img src="{{ url_for('static', filename='img/galeria/palta-galeria.jpg') }}" alt="Campo de Palta" class="gallery-main-image w-full h-full object-cover transition-opacity duration-300">
                 </div>
-                
-                <!-- Miniaturas + Controles -->
+
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div class="grid grid-cols-4 gap-3 w-full sm:w-auto">
-                        <img src="{{ url_for('static', filename='img/palta-thumb1.jpg') }}" class="w-20 h-14 object-cover rounded-xl border-2 border-amber-400 cursor-pointer shadow-sm">
-                        <img src="{{ url_for('static', filename='img/palta-thumb2.jpg') }}" class="w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer">
-                        <img src="{{ url_for('static', filename='img/palta-thumb3.jpg') }}" class="w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer">
-                        <img src="{{ url_for('static', filename='img/palta-thumb4.jpg') }}" class="w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer">
+                    <div class="flex flex-wrap gap-3 w-full sm:w-auto">
+                        <img src="{{ url_for('static', filename='img/galeria/palta5.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/palta5.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border-2 border-amber-400 cursor-pointer shadow-sm" alt="Palta 1">
+                        <img src="{{ url_for('static', filename='img/galeria/palta4.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/palta4.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Palta 2">
+                        <img src="{{ url_for('static', filename='img/galeria/palta3.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/palta3.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Palta 3">
+                        <img src="{{ url_for('static', filename='img/galeria/paltas2.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/paltas2.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Palta 4">
+                        <img src="{{ url_for('static', filename='img/galeria/paltas1.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/paltas1.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Palta 5">
                     </div>
-                    
+
                     <div class="flex items-center gap-3">
-                        <div class="flex gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-800"></span>
-                            <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                            <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                        </div>
+                        <div class="gallery-dots flex gap-1.5"></div>
+
                         <div class="flex gap-1">
-                            <button class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs"><i class="fa-solid fa-chevron-left"></i></button>
-                            <button class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs"><i class="fa-solid fa-chevron-right"></i></button>
+                            <button type="button" class="gallery-prev w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button type="button" class="gallery-next w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- BLOQUE 2: MANGO -->
+        <!-- MANGO -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div class="lg:col-span-4 bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-4">
                 <div class="flex items-center gap-3">
@@ -95,7 +92,7 @@
                     </div>
                     <h2 class="text-2xl font-serif font-bold text-slate-900 tracking-wider">MANGO</h2>
                 </div>
-                
+
                 <p class="text-slate-500 text-xs leading-relaxed">
                     Mangos Kent frescos, extremadamente dulces y jugosos, cosechados cuidadosamente a mano por las familias de la cooperativa. Libres de pesticidas, respetando el ciclo natural y la biodiversidad de nuestras tierras.
                 </p>
@@ -114,35 +111,37 @@
                 </a>
             </div>
 
-            <div class="lg:col-span-8 space-y-4">
+            <div class="lg:col-span-8 space-y-4 gallery-container">
                 <div class="h-80 md:h-96 rounded-3xl overflow-hidden shadow-sm border border-slate-200">
-                    <img src="{{ url_for('static', filename='img/galeria-mango-main.jpg') }}" alt="Árbol de Mango" class="w-full h-full object-cover">
+                    <img src="{{ url_for('static', filename='img/galeria/mango-galeria.jpg') }}" alt="Árbol de Mango" class="gallery-main-image w-full h-full object-cover transition-opacity duration-300">
                 </div>
-                
+
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div class="grid grid-cols-4 gap-3 w-full sm:w-auto">
-                        <img src="{{ url_for('static', filename='img/mango-thumb1.jpg') }}" class="w-20 h-14 object-cover rounded-xl border-2 border-amber-400 cursor-pointer shadow-sm">
-                        <img src="{{ url_for('static', filename='img/mango-thumb2.jpg') }}" class="w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer">
-                        <img src="{{ url_for('static', filename='img/mango-thumb3.jpg') }}" class="w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer">
-                        <img src="{{ url_for('static', filename='img/mango-thumb4.jpg') }}" class="w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer">
+                    <div class="flex flex-wrap gap-3 w-full sm:w-auto">
+                        <img src="{{ url_for('static', filename='img/galeria/mango1.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/mango1.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border-2 border-amber-400 cursor-pointer shadow-sm" alt="Mango 1">
+                        <img src="{{ url_for('static', filename='img/galeria/mango2.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/mango2.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Mango 2">
+                        <img src="{{ url_for('static', filename='img/galeria/mango3.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/mango3.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Mango 3">
+                        <img src="{{ url_for('static', filename='img/galeria/mango4.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/mango4.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Mango 4">
+                        <img src="{{ url_for('static', filename='img/galeria/mango5.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/mango5.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Mango 5">
                     </div>
-                    
+
                     <div class="flex items-center gap-3">
-                        <div class="flex gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-800"></span>
-                            <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                            <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                        </div>
+                        <div class="gallery-dots flex gap-1.5"></div>
+
                         <div class="flex gap-1">
-                            <button class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs"><i class="fa-solid fa-chevron-left"></i></button>
-                            <button class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs"><i class="fa-solid fa-chevron-right"></i></button>
+                            <button type="button" class="gallery-prev w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button type="button" class="gallery-next w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- BLOQUE 3: MARACUYÁ -->
+        <!-- MARACUYÁ -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div class="lg:col-span-4 bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-4">
                 <div class="flex items-center gap-3">
@@ -151,7 +150,7 @@
                     </div>
                     <h2 class="text-2xl font-serif font-bold text-slate-900 tracking-wider">MARACUYÁ</h2>
                 </div>
-                
+
                 <p class="text-slate-500 text-xs leading-relaxed">
                     Fruta de la pasión con un intenso aroma tropical y acidez equilibrada perfecta. Producida de manera ecológica en Lambayeque por productores locales, ideal para jugos puros, pulpa de calidad y exportación selecta.
                 </p>
@@ -170,28 +169,29 @@
                 </a>
             </div>
 
-            <div class="lg:col-span-8 space-y-4">
+            <div class="lg:col-span-8 space-y-4 gallery-container">
                 <div class="h-80 md:h-96 rounded-3xl overflow-hidden shadow-sm border border-slate-200">
-                    <img src="{{ url_for('static', filename='img/galeria-maracuya-main.jpg') }}" alt="Planta de Maracuyá" class="w-full h-full object-cover">
+                    <img src="{{ url_for('static', filename='img/galeria/maracuya-galeria.jpg') }}" alt="Planta de Maracuyá" class="gallery-main-image w-full h-full object-cover transition-opacity duration-300">
                 </div>
-                
+
                 <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div class="grid grid-cols-4 gap-3 w-full sm:w-auto">
-                        <img src="{{ url_for('static', filename='img/maracuya-thumb1.jpg') }}" class="w-20 h-14 object-cover rounded-xl border-2 border-amber-400 cursor-pointer shadow-sm">
-                        <img src="{{ url_for('static', filename='img/maracuya-thumb2.jpg') }}" class="w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer">
-                        <img src="{{ url_for('static', filename='img/maracuya-thumb3.jpg') }}" class="w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer">
-                        <img src="{{ url_for('static', filename='img/maracuya-thumb4.jpg') }}" class="w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer">
+                    <div class="flex flex-wrap gap-3 w-full sm:w-auto">
+                        <img src="{{ url_for('static', filename='img/galeria/maracuya1.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/maracuya1.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border-2 border-amber-400 cursor-pointer shadow-sm" alt="Maracuyá 1">
+                        <img src="{{ url_for('static', filename='img/galeria/maracuya2.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/maracuya2.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Maracuyá 2">
+                        <img src="{{ url_for('static', filename='img/galeria/maracuya3.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/maracuya3.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Maracuyá 3">
+                        <img src="{{ url_for('static', filename='img/galeria/maracuya4.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/maracuya4.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Maracuyá 4">
                     </div>
-                    
+
                     <div class="flex items-center gap-3">
-                        <div class="flex gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-800"></span>
-                            <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                            <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-                        </div>
+                        <div class="gallery-dots flex gap-1.5"></div>
+
                         <div class="flex gap-1">
-                            <button class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs"><i class="fa-solid fa-chevron-left"></i></button>
-                            <button class="w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs"><i class="fa-solid fa-chevron-right"></i></button>
+                            <button type="button" class="gallery-prev w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button type="button" class="gallery-next w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
