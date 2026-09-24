@@ -1,78 +1,94 @@
-// Esperamos a que todo el HTML esté cargado antes de ejecutar el script
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ============================
-    // SLIDER PRINCIPAL (hero)
-    // ============================
+    // =========================================================
+    // SLIDER PRINCIPAL
+    // =========================================================
 
-    // Seleccionamos todas las slides y los puntos (dots) del slider principal
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
 
-    let currentSlide = 0; // índice de la slide que se está mostrando
-    let autoSlideInterval = null; // referencia al setInterval del autoplay
+    let currentSlide = 0;
+    let autoSlideInterval = null;
 
-    const totalSlides = slides.length;
-
-    // Solo inicializamos el slider si existen slides en la página
-    if (totalSlides > 0) {
-
-        // Muestra la slide correspondiente al índice recibido
-        // y oculta el resto usando las clases de opacidad de Tailwind
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                if (i === index) {
-                    slide.classList.remove('opacity-0');
-                    slide.classList.add('opacity-100', 'active');
-                } else {
-                    slide.classList.remove('opacity-100', 'active');
-                    slide.classList.add('opacity-0');
-                }
-            });
-
-            // Actualizamos el estilo de los puntos (dots) según la slide activa
-            dots.forEach((dot, i) => {
-                if (i === index) {
-                    dot.classList.remove('bg-white/50');
-                    dot.classList.add('bg-amber-400');
-                } else {
-                    dot.classList.remove('bg-amber-400');
-                    dot.classList.add('bg-white/50');
-                }
-            });
-
-            currentSlide = index;
+    function showSlide(index) {
+        if (slides.length === 0) {
+            return;
         }
 
-        // Avanza a la siguiente slide (vuelve a la primera al llegar al final)
-        function nextSlide() {
-            const next = (currentSlide + 1) % totalSlides;
-            showSlide(next);
+        slides.forEach((slide, slideIndex) => {
+            slide.classList.toggle(
+                'opacity-100',
+                slideIndex === index
+            );
+
+            slide.classList.toggle(
+                'opacity-0',
+                slideIndex !== index
+            );
+
+            slide.classList.toggle(
+                'active',
+                slideIndex === index
+            );
+        });
+
+        dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle(
+                'bg-amber-400',
+                dotIndex === index
+            );
+
+            dot.classList.toggle(
+                'bg-white/50',
+                dotIndex !== index
+            );
+        });
+
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        if (slides.length === 0) {
+            return;
         }
 
-        // Retrocede a la slide anterior (vuelve a la última si está en la primera)
-        function prevSlide() {
-            const prev = (currentSlide - 1 + totalSlides) % totalSlides;
-            showSlide(prev);
+        currentSlide =
+            (currentSlide + 1) % slides.length;
+
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        if (slides.length === 0) {
+            return;
         }
 
-        // Inicia (o reinicia) el autoplay del slider cada 5 segundos
-        function startAutoSlide() {
-            stopAutoSlide(); // evitamos que se acumulen varios intervalos
-            autoSlideInterval = setInterval(nextSlide, 5000);
+        currentSlide =
+            (currentSlide - 1 + slides.length) %
+            slides.length;
+
+        showSlide(currentSlide);
+    }
+
+    function startAutoSlide() {
+        if (slides.length === 0) {
+            return;
         }
 
-        // Detiene el autoplay del slider
-        function stopAutoSlide() {
-            if (autoSlideInterval) {
-                clearInterval(autoSlideInterval);
-                autoSlideInterval = null;
-            }
+        if (autoSlideInterval) {
+            clearInterval(autoSlideInterval);
         }
 
-        // Botón "siguiente": avanza manualmente y reinicia el autoplay
+        autoSlideInterval =
+            setInterval(nextSlide, 5000);
+    }
+
+    if (slides.length > 0) {
+        showSlide(0);
+        startAutoSlide();
+
         if (nextBtn) {
             nextBtn.addEventListener('click', () => {
                 nextSlide();
@@ -80,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Botón "anterior": retrocede manualmente y reinicia el autoplay
         if (prevBtn) {
             prevBtn.addEventListener('click', () => {
                 prevSlide();
@@ -88,225 +103,488 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Cada punto (dot) permite saltar directamente a su slide
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 showSlide(index);
                 startAutoSlide();
             });
         });
-
-        // Mostramos la primera slide y arrancamos el autoplay al cargar la página
-        showSlide(0);
-        startAutoSlide();
     }
 
 
-    // ============================
-    // MENÚ HAMBURGUESA (móvil)
-    // ============================
+    // =========================================================
+    // MENÚ HAMBURGUESA
+    // =========================================================
 
-    const btnMenu = document.getElementById('btnMenu');
-    const menuMovil = document.getElementById('menuMovil');
+    const btnMenu =
+        document.getElementById('btnMenu');
+
+    const menuMovil =
+        document.getElementById('menuMovil');
 
     if (btnMenu && menuMovil) {
 
-        // Al hacer clic en el botón hamburguesa, mostramos/ocultamos el menú móvil
         btnMenu.addEventListener('click', (event) => {
             event.preventDefault();
+
             menuMovil.classList.toggle('hidden');
 
-            // Cambiamos el ícono entre "hamburguesa" y "X" según el estado del menú
-            const icon = btnMenu.querySelector('i');
+            const icon =
+                btnMenu.querySelector('i');
 
-            if (icon) {
-                if (menuMovil.classList.contains('hidden')) {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                } else {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-xmark');
-                }
+            if (!icon) {
+                return;
+            }
+
+            if (menuMovil.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
             }
         });
 
-        // Si el usuario hace clic en algún link del menú móvil, lo cerramos automáticamente
-        const menuLinks = menuMovil.querySelectorAll('a');
+        const menuLinks =
+            menuMovil.querySelectorAll('a');
 
         menuLinks.forEach((link) => {
             link.addEventListener('click', () => {
+
                 menuMovil.classList.add('hidden');
 
-                const icon = btnMenu.querySelector('i');
+                const icon =
+                    btnMenu.querySelector('i');
 
                 if (icon) {
                     icon.classList.remove('fa-xmark');
                     icon.classList.add('fa-bars');
                 }
             });
-        });
-
-        // Si la pantalla se agranda (por ejemplo, se pasa a vista de escritorio),
-        // cerramos el menú móvil automáticamente para evitar que quede abierto
-        window.addEventListener('resize', () => {
-            if (window.innerWidth >= 768) {
-                menuMovil.classList.add('hidden');
-
-                const icon = btnMenu.querySelector('i');
-
-                if (icon) {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
-            }
         });
     }
 
 
-    // ============================
-    // GALERÍAS DE PRODUCTOS
-    // (Palta, Mango, Maracuyá, etc.)
-    // ============================
+    // =========================================================
+    // GALERÍAS
+    // =========================================================
 
-    // Puede haber varias galerías en la misma página, así que recorremos todas
-    const galleries = document.querySelectorAll('.gallery-container');
+    const galleries =
+        document.querySelectorAll('.gallery-container');
 
     galleries.forEach((gallery) => {
 
-        // Elementos internos de esta galería en particular
-        const mainImage = gallery.querySelector('.gallery-main-image'); // imagen grande
-        const thumbnails = gallery.querySelectorAll('.gallery-thumbnail'); // miniaturas
-        const prevButton = gallery.querySelector('.gallery-prev'); // flecha izquierda
-        const nextButton = gallery.querySelector('.gallery-next'); // flecha derecha
-        const dotsContainer = gallery.querySelector('.gallery-dots'); // contenedor de puntos
+        const mainImage =
+            gallery.querySelector('.gallery-main-image');
 
-        // Si falta algún elemento esencial, no inicializamos esta galería
-        // (evita errores si el HTML de alguna sección está incompleto)
-        if (!mainImage || thumbnails.length === 0 || !prevButton || !nextButton || !dotsContainer) {
+        const thumbnails =
+            gallery.querySelectorAll('.gallery-thumbnail');
+
+        const prevButton =
+            gallery.querySelector('.gallery-prev');
+
+        const nextButton =
+            gallery.querySelector('.gallery-next');
+
+        const dotsContainer =
+            gallery.querySelector('.gallery-dots');
+
+        if (
+            !mainImage ||
+            thumbnails.length === 0 ||
+            !prevButton ||
+            !nextButton ||
+            !dotsContainer
+        ) {
             return;
         }
 
-        // -----------------------------------------------------------
-        // Construimos la lista COMPLETA de imágenes por las que rota
-        // el visor: la imagen principal original (la que ya viene fija
-        // en el HTML, ej. "palta-galeria.jpg") + todas las miniaturas.
-        // Así, al dar "siguiente" varias veces, el ciclo SIEMPRE vuelve
-        // a mostrar la imagen principal original en vez de perderse.
-        // -----------------------------------------------------------
-        const heroImageUrl = mainImage.getAttribute('src');
-        const imageList = [heroImageUrl, ...Array.from(thumbnails).map((t) => t.dataset.image)];
-        const totalImages = imageList.length;
+        const imageList = [
+            mainImage.src,
+            ...Array.from(thumbnails)
+                .map((thumbnail) => thumbnail.dataset.image)
+                .filter(Boolean)
+        ];
 
-        let currentImage = 0; // 0 = imagen principal original, 1..N = miniaturas
+        let currentImage = 0;
 
-        // Generamos dinámicamente un punto (dot) por cada miniatura
-        thumbnails.forEach((thumbnail, index) => {
-            const dot = document.createElement('button');
-
-            dot.type = 'button';
-            dot.className = 'w-2 h-2 rounded-full bg-slate-300 cursor-pointer transition-all duration-200';
-            dot.setAttribute('aria-label', `Mostrar imagen ${index + 1}`);
-
-            // Al hacer clic en un punto, mostramos la imagen de esa miniatura
-            // (le sumamos 1 porque el índice 0 está reservado para la imagen principal)
-            dot.addEventListener('click', () => {
-                showGalleryImage(index + 1);
-            });
-
-            dotsContainer.appendChild(dot);
-        });
-
-        // Guardamos referencia a los puntos ya creados para poder actualizarlos después
-        const galleryDots = dotsContainer.querySelectorAll('button');
-
-        // Guardamos la referencia del setTimeout activo para poder cancelarlo
-        // si el usuario hace clic varias veces seguidas muy rápido.
-        // Esto evita que la imagen se quede "trabada" en opacidad 0 (invisible).
-        let fadeTimeout = null;
-
-        // Cambia la imagen principal por la del índice indicado (dentro de imageList),
-        // y actualiza los estilos de miniaturas y puntos para reflejar la selección activa
         function showGalleryImage(index) {
-            // Si el índice se pasa del final, volvemos al inicio (imagen principal original)
-            if (index >= totalImages) {
+
+            if (imageList.length === 0) {
+                return;
+            }
+
+            if (index >= imageList.length) {
                 index = 0;
             }
 
-            // Si el índice es negativo, saltamos a la última imagen del ciclo
             if (index < 0) {
-                index = totalImages - 1;
+                index = imageList.length - 1;
             }
 
             currentImage = index;
 
-            const imageUrl = imageList[currentImage];
+            mainImage.src =
+                imageList[currentImage];
 
-            // Si había una transición pendiente de un clic anterior, la cancelamos
-            // antes de iniciar una nueva. Esto es lo que evita que la imagen
-            // se quede invisible cuando se hace clic varias veces muy rápido.
-            if (fadeTimeout) {
-                clearTimeout(fadeTimeout);
-            }
+            thumbnails.forEach(
+                (thumbnail, thumbnailIndex) => {
 
-            // Aplicamos un pequeño efecto de fundido: ocultamos, cambiamos el src, mostramos
-            mainImage.classList.add('opacity-0');
+                    const activo =
+                        thumbnailIndex === currentImage - 1;
 
-            fadeTimeout = setTimeout(() => {
-                mainImage.src = imageUrl;
-                mainImage.classList.remove('opacity-0');
-                fadeTimeout = null;
-            }, 150);
+                    thumbnail.classList.toggle(
+                        'border-amber-400',
+                        activo
+                    );
 
-            // Resaltamos con borde ámbar la miniatura seleccionada
-            // (currentImage - 1 porque el índice 0 es la imagen principal, sin miniatura asociada)
-            thumbnails.forEach((thumbnail, thumbnailIndex) => {
-                if (thumbnailIndex === currentImage - 1) {
-                    thumbnail.classList.remove('border-transparent');
-                    thumbnail.classList.add('border-amber-400');
-                } else {
-                    thumbnail.classList.remove('border-amber-400');
-                    thumbnail.classList.add('border-transparent');
+                    thumbnail.classList.toggle(
+                        'border-transparent',
+                        !activo
+                    );
                 }
-            });
-
-            // Resaltamos el punto (dot) correspondiente a la imagen activa
-            galleryDots.forEach((dot, dotIndex) => {
-                if (dotIndex === currentImage - 1) {
-                    dot.classList.remove('bg-slate-300');
-                    dot.classList.add('bg-emerald-800', 'scale-125');
-                } else {
-                    dot.classList.remove('bg-emerald-800', 'scale-125');
-                    dot.classList.add('bg-slate-300');
-                }
-            });
+            );
         }
 
-        // Cada miniatura, al hacer clic, muestra su imagen en el visor principal
-        // (le sumamos 1 porque el índice 0 está reservado para la imagen principal)
-        thumbnails.forEach((thumbnail, index) => {
-            thumbnail.addEventListener('click', () => {
-                showGalleryImage(index + 1);
+        thumbnails.forEach(
+            (thumbnail, index) => {
+
+                thumbnail.addEventListener(
+                    'click',
+                    () => {
+                        showGalleryImage(index + 1);
+                    }
+                );
+            }
+        );
+
+        prevButton.addEventListener(
+            'click',
+            () => {
+                showGalleryImage(currentImage - 1);
+            }
+        );
+
+        nextButton.addEventListener(
+            'click',
+            () => {
+                showGalleryImage(currentImage + 1);
+            }
+        );
+    });
+
+
+    // =========================================================
+    // FORMULARIO DE CONTACTO
+    // =========================================================
+
+    const contactForm =
+        document.getElementById('contactForm');
+
+    if (contactForm) {
+
+        const nombreInput =
+            contactForm.querySelector('[name="nombre"]');
+
+        const apellidoInput =
+            contactForm.querySelector('[name="apellido"]');
+
+        const telefonoInput =
+            contactForm.querySelector('[name="telefono"]');
+
+        const correoInput =
+            contactForm.querySelector('[name="correo"]');
+
+        const mensajeInput =
+            contactForm.querySelector('[name="mensaje"]');
+
+
+        // =====================================================
+        // MOSTRAR ERROR
+        // =====================================================
+
+        function mostrarError(input, mensaje) {
+
+            if (!input) {
+                return;
+            }
+
+            const contenedor =
+                input.parentElement;
+
+            if (!contenedor) {
+                return;
+            }
+
+            const errorElement =
+                contenedor.querySelector('.error-message');
+
+            if (errorElement) {
+                errorElement.textContent = mensaje;
+
+                errorElement.classList.toggle(
+                    'hidden',
+                    mensaje === ''
+                );
+            }
+
+            input.classList.toggle(
+                'ring-2',
+                mensaje !== ''
+            );
+
+            input.classList.toggle(
+                'ring-red-500',
+                mensaje !== ''
+            );
+        }
+
+
+        // =====================================================
+        // VALIDACIÓN DE NOMBRE Y APELLIDO
+        // =====================================================
+
+        function validarTexto(input, nombreCampo) {
+
+            if (!input) {
+                return false;
+            }
+
+            const valor =
+                input.value.trim();
+
+            const soloLetras =
+                /^[A-Za-zÁÉÍÓÚÑÜáéíóúñü\s]+$/;
+
+            if (valor === '') {
+                mostrarError(
+                    input,
+                    `Ingresa tu ${nombreCampo}`
+                );
+
+                return false;
+            }
+
+            if (!soloLetras.test(valor)) {
+                mostrarError(
+                    input,
+                    `El ${nombreCampo} solo debe contener letras`
+                );
+
+                return false;
+            }
+
+            mostrarError(input, '');
+
+            return true;
+        }
+
+
+        // =====================================================
+        // VALIDACIÓN DEL TELÉFONO
+        // =====================================================
+
+        function validarTelefono() {
+
+            if (!telefonoInput) {
+                return false;
+            }
+
+            const telefono =
+                telefonoInput.value.trim();
+
+            if (!/^9[0-9]{8}$/.test(telefono)) {
+
+                mostrarError(
+                    telefonoInput,
+                    'El teléfono debe tener 9 dígitos y comenzar con 9'
+                );
+
+                return false;
+            }
+
+            mostrarError(telefonoInput, '');
+
+            return true;
+        }
+
+
+        // =====================================================
+        // VALIDACIÓN DEL CORREO
+        // =====================================================
+
+        function validarCorreo() {
+
+            if (!correoInput) {
+                return false;
+            }
+
+            const correo =
+                correoInput.value.trim();
+
+            const emailRegex =
+               /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(correo)) {
+
+                mostrarError(
+                    correoInput,
+                    'Ingresa un correo válido'
+                );
+
+                return false;
+            }
+
+            mostrarError(correoInput, '');
+
+            return true;
+        }
+
+
+        // =====================================================
+        // VALIDACIÓN DEL MENSAJE
+        // =====================================================
+
+        function validarMensaje() {
+
+            if (!mensajeInput) {
+                return false;
+            }
+
+            if (mensajeInput.value.trim() === '') {
+
+                mostrarError(
+                    mensajeInput,
+                    'Ingresa un mensaje'
+                );
+
+                return false;
+            }
+
+            mostrarError(mensajeInput, '');
+
+            return true;
+        }
+
+
+        // =====================================================
+        // SOLO LETRAS EN NOMBRE Y APELLIDO
+        // =====================================================
+
+        [nombreInput, apellidoInput].forEach((input) => {
+
+            if (!input) {
+                return;
+            }
+
+            input.addEventListener('input', () => {
+
+                input.value =
+                    input.value.replace(
+                        /[^A-Za-zÁÉÍÓÚÑÜáéíóúñü\s]/g,
+                        ''
+                    );
             });
         });
 
-        // Flecha izquierda: retrocede a la imagen anterior
-        prevButton.addEventListener('click', () => {
-            showGalleryImage(currentImage - 1);
-        });
 
-        // Flecha derecha: avanza a la siguiente imagen
-        nextButton.addEventListener('click', () => {
-            showGalleryImage(currentImage + 1);
-        });
+        // =====================================================
+        // SOLO NÚMEROS EN TELÉFONO
+        // =====================================================
 
-        // Estado inicial: dejamos ninguna miniatura marcada como activa,
-        // porque al cargar la página se está mostrando la imagen principal
-        // original (índice 0), no una miniatura. NO llamamos a
-        // showGalleryImage(0) aquí porque eso reemplazaría innecesariamente
-        // el src de la imagen principal que ya viene correcto desde el HTML.
-        thumbnails.forEach((thumbnail) => {
-            thumbnail.classList.remove('border-amber-400');
-            thumbnail.classList.add('border-transparent');
-        });
-    });
+        if (telefonoInput) {
+
+            telefonoInput.addEventListener(
+                'input',
+                () => {
+
+                    telefonoInput.value =
+                        telefonoInput.value
+                            .replace(/[^0-9]/g, '')
+                            .substring(0, 9);
+                }
+            );
+        }
+
+
+        // =====================================================
+        // ENVÍO DEL FORMULARIO
+        // =====================================================
+
+        contactForm.addEventListener(
+            'submit',
+            (event) => {
+
+                const nombreValido =
+                    validarTexto(
+                        nombreInput,
+                        'nombre'
+                    );
+
+                const apellidoValido =
+                    validarTexto(
+                        apellidoInput,
+                        'apellido'
+                    );
+
+                const telefonoValido =
+                    validarTelefono();
+
+                const correoValido =
+                    validarCorreo();
+
+                const mensajeValido =
+                    validarMensaje();
+
+                const formularioValido =
+                    nombreValido &&
+                    apellidoValido &&
+                    telefonoValido &&
+                    correoValido &&
+                    mensajeValido;
+
+                if (!formularioValido) {
+                    event.preventDefault();
+                    return;
+                }
+
+                /*
+                 * Si todos los campos son válidos,
+                 * permitimos que el formulario se envíe
+                 * normalmente mediante POST a Flask.
+                 */
+            }
+        );
+
+
+        // =====================================================
+        // MODAL DE ÉXITO
+        // =====================================================
+
+        const successModal =
+            document.getElementById('successModal');
+
+        const closeModalBtn =
+            document.getElementById('closeSuccessModal');
+
+        if (closeModalBtn && successModal) {
+
+            closeModalBtn.addEventListener(
+                'click',
+                () => {
+                    successModal.classList.add('hidden');
+                }
+            );
+
+            successModal.addEventListener(
+                'click',
+                (event) => {
+
+                    if (event.target === successModal) {
+                        successModal.classList.add('hidden');
+                    }
+                }
+            );
+        }
+    }
 });
