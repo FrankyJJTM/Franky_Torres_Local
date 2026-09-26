@@ -586,18 +586,7 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         }
     }
-    // 1. MODO OSCURO / CLARO (Dark Mode Toggle)
-    const btnTheme = document.getElementById('btnThemeToggle');
-    if (btnTheme) {
-        btnTheme.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            const isDark = document.documentElement.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-        if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.classList.add('dark');
-        }
-    }
+
     // 1. BOTÓN "VOLVER ARRIBA" (Scroll to Top)
     const btnScrollTop = document.getElementById('btnScrollTop');
     if (btnScrollTop) {
