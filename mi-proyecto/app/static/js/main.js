@@ -419,17 +419,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 return false;
             }
 
-            const correo =
-                correoInput.value.trim();
+            const correo = correoInput.value.trim();
 
-            const emailRegex =
-               /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // Exige que la parte local (antes del @) contenga al menos una letra (a-z)
+            const emailRegex = /^(?=.*[a-zA-Z])[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             if (!emailRegex.test(correo)) {
 
                 mostrarError(
                     correoInput,
-                    'Ingresa un correo válido'
+                    'El correo debe contener al menos una letra en el usuario'
                 );
 
                 return false;
@@ -586,5 +585,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             );
         }
+    }
+    // 1. MODO OSCURO / CLARO (Dark Mode Toggle)
+    const btnTheme = document.getElementById('btnThemeToggle');
+    if (btnTheme) {
+        btnTheme.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            const isDark = document.documentElement.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    }
+    // 1. BOTÓN "VOLVER ARRIBA" (Scroll to Top)
+    const btnScrollTop = document.getElementById('btnScrollTop');
+    if (btnScrollTop) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                btnScrollTop.classList.remove('hidden');
+            } else {
+                btnScrollTop.classList.add('hidden');
+            }
+        });
+        btnScrollTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 });

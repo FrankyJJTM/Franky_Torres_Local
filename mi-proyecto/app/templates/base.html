@@ -5,18 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Agrofrutos{% endblock %}</title>
 
-    <!-- Tailwind CSS compilado LOCALMENTE (ya no usamos el CDN) -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- CSS Personalizado -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen">
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen relative">
 
-    <!-- NAVBAR -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -26,7 +20,6 @@
                 <span class="font-extrabold text-xl tracking-wider text-emerald-900">AGROFRUTOS</span>
             </div>
 
-            <!-- Menú horizontal: visible desde tablet/escritorio (md en adelante) -->
             <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-700">
                 <a href="{{ url_for('clientes.home') }}" class="hover:text-emerald-800 transition">INICIO</a>
                 <a href="{{ url_for('clientes.producto') }}" class="hover:text-emerald-800 transition">PRODUCTO</a>
@@ -39,13 +32,11 @@
                 CONTACTO
             </a>
 
-            <!-- Botón hamburguesa: solo visible en celular (oculto desde md) -->
             <button id="btnMenu" class="md:hidden text-emerald-900 text-2xl">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
 
-        <!-- Menú desplegable de celular -->
         <div id="menuMovil" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-3 font-semibold text-sm text-slate-700">
             <a href="{{ url_for('clientes.home') }}" class="block py-1">INICIO</a>
             <a href="{{ url_for('clientes.producto') }}" class="block py-1">PRODUCTO</a>
@@ -56,13 +47,11 @@
         </div>
     </header>
 
-    <!-- BLOQUE DINÁMICO DONDE SE INYECTA INDEX.HTML -->
     <main class="flex-grow">
         {% block content %}
         {% endblock %}
     </main>
 
-    <!-- FOOTER -->
     <footer class="bg-emerald-950 text-slate-200 mt-16 pt-16 pb-8 border-t border-emerald-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-emerald-900/60">
@@ -106,7 +95,14 @@
         </div>
     </footer>
 
-    <!-- JS Principal -->
+    <!-- BOTÓN VOLVER ARRIBA -->
+    <button 
+        id="btnScrollTop" 
+        class="hidden fixed bottom-6 right-6 bg-amber-400 hover:bg-amber-500 text-emerald-950 w-11 h-11 rounded-full shadow-lg transition-all flex items-center justify-center z-50 cursor-pointer"
+        aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
