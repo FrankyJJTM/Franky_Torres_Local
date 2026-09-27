@@ -586,6 +586,46 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         }
     }
+     // =========================================================
+    // NAVEGACIÓN DEL LOGO AL INICIO
+    // =========================================================
+
+    const logoAgrofrutos =
+        document.getElementById('logoAgrofrutos');
+
+    if (logoAgrofrutos) {
+
+        const homeUrl =
+            logoAgrofrutos.dataset.homeUrl;
+
+        logoAgrofrutos.addEventListener(
+            'click',
+            () => {
+
+                window.location.href = homeUrl;
+
+            }
+        );
+
+        logoAgrofrutos.addEventListener(
+            'keydown',
+            (event) => {
+
+                if (
+                    event.key === 'Enter' ||
+                    event.key === ' '
+                ) {
+
+                    event.preventDefault();
+
+                    window.location.href = homeUrl;
+
+                }
+
+            }
+        );
+
+    }
 
     // 1. BOTÓN "VOLVER ARRIBA" (Scroll to Top)
     const btnScrollTop = document.getElementById('btnScrollTop');

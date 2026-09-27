@@ -13,7 +13,7 @@
 
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
+            <div id="logoAgrofrutos" data-home-url="{{ url_for('clientes.home') }}" class="flex items-center gap-3 cursor-pointer" role="button" tabindex="0" aria-label="Ir al inicio">
                 <div class="w-10 h-10 rounded-full bg-emerald-800 flex items-center justify-center text-amber-400 font-bold text-xl shadow">
                     <i class="fa-solid fa-leaf"></i>
                 </div>
@@ -32,7 +32,7 @@
                 CONTACTO
             </a>
 
-            <button id="btnMenu" class="md:hidden text-emerald-900 text-2xl">
+            <button id="btnMenu" class="md:hidden text-emerald-900 text-2xl" aria-expanded="false" aria-controls="menuMovil" aria-label="Abrir menú">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
@@ -70,10 +70,10 @@
                 <div>
                     <h4 class="text-amber-500 font-bold text-xs tracking-widest uppercase mb-4">Enlaces</h4>
                     <ul class="space-y-2 text-sm text-slate-300">
-                        <li><a href="#" class="hover:text-white transition">Inicio</a></li>
-                        <li><a href="#" class="hover:text-white transition">Productos</a></li>
-                        <li><a href="#" class="hover:text-white transition">Nosotros</a></li>
-                        <li><a href="#" class="hover:text-white transition">Galería</a></li>
+                        <li><a href="{{ url_for('clientes.home') }}" class="hover:text-white transition">Inicio</a></li>
+                        <li><a href="{{ url_for('clientes.producto') }}" class="hover:text-white transition">Productos</a></li>
+                        <li><a href="{{ url_for('clientes.nosotros') }}" class="hover:text-white transition">Nosotros</a></li>
+                        <li><a href="{{ url_for('clientes.galeria') }}" class="hover:text-white transition">Galería</a></li>
                     </ul>
                 </div>
 
@@ -87,9 +87,9 @@
             <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
                 <p>© 2026 Agrofrutos. Todos los derechos reservados.</p>
                 <div class="flex items-center gap-4 text-base">
-                    <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
