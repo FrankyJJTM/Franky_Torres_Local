@@ -641,24 +641,25 @@ document.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
-});
-
 // =========================================================
 // CONTADOR ANIMADO DE ESTADÍSTICAS (sección Nosotros)
 // =========================================================
+
 const contadores = document.querySelectorAll('.contador');
 
 if (contadores.length > 0) {
     const animarContador = (elemento) => {
         const target = parseInt(elemento.dataset.target, 10);
         const suffix = elemento.dataset.suffix || '';
-        const duracion = 1500; // milisegundos
+        const duracion = 1500;
         const inicio = performance.now();
 
         const paso = (ahora) => {
             const progreso = Math.min((ahora - inicio) / duracion, 1);
             const valorActual = Math.floor(progreso * target);
-            elemento.textContent = valorActual.toLocaleString('es-PE') + suffix;
+
+            elemento.textContent =
+                valorActual.toLocaleString('es-PE') + suffix;
 
             if (progreso < 1) {
                 requestAnimationFrame(paso);
@@ -672,10 +673,45 @@ if (contadores.length > 0) {
         entradas.forEach((entrada) => {
             if (entrada.isIntersecting) {
                 animarContador(entrada.target);
-                observer.unobserve(entrada.target); // solo anima una vez
+                observer.unobserve(entrada.target);
             }
         });
     }, { threshold: 0.5 });
 
     contadores.forEach((contador) => observer.observe(contador));
+}
+
+
+// =========================================================
+// CONTADOR DE CARACTERES (MENSAJE DE CONTACTO)
+// =========================================================
+
+const mensajeInputContador =
+    document.getElementById('mensajeInput');
+
+const contadorMensaje =
+    document.getElementById('contadorMensaje');
+
+if (mensajeInputContador && contadorMensaje) {
+    const limiteMaximo = 300;
+
+    const actualizarContador = () => {
+        const caracteresEscritos =
+            mensajeInputContador.value.length;
+
+        contadorMensaje.textContent =
+            `${caracteresEscritos}/${limiteMaximo}`;
+
+        contadorMensaje.classList.toggle(
+            'limite-cerca',
+            caracteresEscritos >= limiteMaximo - 20
+        );
+    };
+
+    mensajeInputContador.addEventListener(
+        'input',
+        actualizarContador
+    );
+
+    actualizarContador();
 }
