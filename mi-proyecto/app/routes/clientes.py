@@ -7,9 +7,9 @@ clientes_bp = Blueprint('clientes', __name__)
 def home():
     return render_template('clientes/index.html')
 
-@clientes_bp.route('/producto')
-def producto():
-    return render_template('clientes/producto.html')
+@clientes_bp.route('/productos')
+def productos():
+    return render_template('clientes/productos.html')
 
 @clientes_bp.route('/nosotros')
 def nosotros():
