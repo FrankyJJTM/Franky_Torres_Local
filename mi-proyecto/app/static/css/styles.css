@@ -67,3 +67,29 @@
     color: #dc2626;
     font-weight: 600;
 }
+/* =========================================================
+   FILTRO DE PRODUCTOS POR CATEGORÍA
+   ========================================================= */
+
+/* Transición suave para las tarjetas al mostrar u ocultar */
+.product-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Efecto al pasar el mouse sobre las tarjetas */
+.product-card:hover {
+    transform: translateY(-4px);
+}
+/* =========================================================
+   BOTONES DE CATEGORÍA: letra verde cuando el botón es blanco
+   ========================================================= */
+
+.product-category-button.bg-white {
+    color: #064e3b;
+}
+
+/* Al pasar el mouse: fondo verde muy suave y la letra sigue verde */
+.product-category-button.bg-white:hover {
+    background-color: #ecfdf5;
+    color: #064e3b;
+}
