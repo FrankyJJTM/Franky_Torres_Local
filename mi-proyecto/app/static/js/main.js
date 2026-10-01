@@ -715,3 +715,89 @@ if (mensajeInputContador && contadorMensaje) {
 
     actualizarContador();
 }
+
+// =========================================================
+// FILTRO DE PRODUCTOS POR CATEGORÍA
+// =========================================================
+
+const categoryButtons = document.querySelectorAll(
+    '.product-category-button'
+);
+
+const productCards = document.querySelectorAll(
+    '.product-card'
+);
+
+if (
+    categoryButtons.length > 0 &&
+    productCards.length > 0
+) {
+
+    categoryButtons.forEach((button) => {
+
+        button.addEventListener('click', () => {
+
+            const selectedCategory =
+                button.dataset.category;
+
+
+            // =====================================================
+            // ACTUALIZAR ESTILO DEL BOTÓN SELECCIONADO
+            // =====================================================
+
+            categoryButtons.forEach((categoryButton) => {
+
+                categoryButton.classList.remove(
+                    'bg-emerald-900',
+                    'text-white'
+                );
+
+                categoryButton.classList.add(
+                    'bg-white',
+                    'text-emerald-900'
+                );
+
+            });
+
+            button.classList.remove(
+                'bg-white',
+                'text-emerald-900'
+            );
+
+            button.classList.add(
+                'bg-emerald-900',
+                'text-white'
+            );
+
+
+            // =====================================================
+            // MOSTRAR PRODUCTOS DE LA CATEGORÍA SELECCIONADA
+            // =====================================================
+
+            productCards.forEach((productCard) => {
+
+                const productCategory =
+                    productCard.dataset.productCategory;
+
+                if (
+                    productCategory === selectedCategory
+                ) {
+
+                    productCard.classList.remove('hidden');
+
+                } else {
+
+                    productCard.classList.add('hidden');
+
+                }
+
+            });
+
+        });
+
+    });
+
+}
+
+});
+
