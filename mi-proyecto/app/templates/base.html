@@ -102,6 +102,80 @@
         aria-label="Volver arriba">
         <i class="fa-solid fa-arrow-up"></i>
     </button>
+    <!-- =========================================================
+     CHATBOT AGROFRUTOS
+     ========================================================= -->
+
+<div class="chatbot-container">
+
+    <button
+        id="chatbot-button"
+        class="chatbot-button"
+        type="button"
+        aria-label="Abrir asistente virtual"
+        title="Abrir asistente virtual"
+    >
+        <i class="fa-solid fa-comments"></i>
+    </button>
+
+    <div
+        id="chatbot-window"
+        class="chatbot-window hidden"
+    >
+
+        <div class="chatbot-header">
+            <div>
+                <h2>Agrofrutos</h2>
+                <span>Asistente virtual</span>
+            </div>
+
+            <button
+                id="chatbot-close"
+                class="chatbot-close"
+                type="button"
+                aria-label="Cerrar chatbot"
+                title="Cerrar chatbot"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div
+            id="chatbot-messages"
+            class="chatbot-messages"
+        >
+            <div class="chatbot-message chatbot-message-bot">
+                ¡Hola! 👋 Soy el asistente virtual de Agrofrutos.
+                ¿En qué podemos ayudarte?
+            </div>
+        </div>
+
+        <div class="chatbot-input-container">
+
+            <input
+                id="chatbot-input"
+                class="chatbot-input"
+                type="text"
+                placeholder="Escribe tu mensaje..."
+                autocomplete="off"
+                aria-label="Escribe tu mensaje"
+            >
+
+            <button
+                id="chatbot-send"
+                class="chatbot-send"
+                type="button"
+                aria-label="Enviar mensaje"
+                title="Enviar mensaje"
+            >
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
