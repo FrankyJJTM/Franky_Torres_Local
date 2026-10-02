@@ -798,6 +798,387 @@ if (
     });
 
 }
+// =========================================================
+// CHATBOT AGROFRUTOS
+// =========================================================
 
+const chatbotButton = document.getElementById('chatbot-button');
+const chatbotWindow = document.getElementById('chatbot-window');
+const chatbotClose = document.getElementById('chatbot-close');
+const chatbotInput = document.getElementById('chatbot-input');
+const chatbotSend = document.getElementById('chatbot-send');
+const chatbotMessages = document.getElementById('chatbot-messages');
+
+if (
+    chatbotButton &&
+    chatbotWindow &&
+    chatbotClose &&
+    chatbotInput &&
+    chatbotSend &&
+    chatbotMessages
+) {
+    const mensajeInicial =
+        '¡Hola! 👋 Soy el asistente virtual de Agrofrutos. ¿En qué podemos ayudarte?';
+
+    // =====================================================
+    // AGREGAR MENSAJE
+    // =====================================================
+
+    function agregarMensaje(mensaje, tipo) {
+        const mensajeElement = document.createElement('div');
+
+        mensajeElement.classList.add(
+            'chatbot-message',
+            tipo === 'usuario'
+                ? 'chatbot-message-user'
+                : 'chatbot-message-bot'
+        );
+
+        mensajeElement.textContent = mensaje;
+
+        chatbotMessages.appendChild(mensajeElement);
+
+        chatbotMessages.scrollTop =
+            chatbotMessages.scrollHeight;
+    }
+
+    // =====================================================
+    // LIMPIAR CONVERSACIÓN
+    // =====================================================
+
+    function limpiarConversacion() {
+        chatbotMessages.innerHTML = '';
+
+        agregarMensaje(
+            mensajeInicial,
+            'bot'
+        );
+
+        chatbotInput.value = '';
+    }
+
+    // =====================================================
+    // RESPUESTAS DEL CHATBOT
+    // =====================================================
+
+    function obtenerRespuesta(mensaje) {
+        const mensajeNormalizado = mensaje
+            .toLowerCase()
+            .trim();
+
+        // =================================================
+        // SALUDOS
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('hola') ||
+            mensajeNormalizado.includes('buenas') ||
+            mensajeNormalizado.includes('saludos') ||
+            mensajeNormalizado.includes('buenos dias') ||
+            mensajeNormalizado.includes('buenos días') ||
+            mensajeNormalizado.includes('buenas tardes') ||
+            mensajeNormalizado.includes('buenas noches')
+        ) {
+            return '¡Hola! 👋 Bienvenido a Agrofrutos. ¿En qué podemos ayudarte?';
+        }
+
+        // =================================================
+        // PRODUCTOS
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('producto') ||
+            mensajeNormalizado.includes('productos') ||
+            mensajeNormalizado.includes('vende') ||
+            mensajeNormalizado.includes('venden') ||
+            mensajeNormalizado.includes('que venden') ||
+            mensajeNormalizado.includes('qué venden')
+        ) {
+            return 'En Agrofrutos contamos con productos como palta, mango y maracuyá. Puedes visitar la sección Productos para conocer más.';
+        }
+
+        // =================================================
+        // PALTA
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('palta') ||
+            mensajeNormalizado.includes('aguacate')
+        ) {
+            return 'Agrofrutos ofrece palta como uno de sus principales productos. Puedes visitar la sección Productos para conocer sus características.';
+        }
+
+        // =================================================
+        // MANGO
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('mango')
+        ) {
+            return 'Agrofrutos ofrece mango como uno de sus principales productos. Puedes visitar la sección Productos para conocer más.';
+        }
+
+        // =================================================
+        // MARACUYÁ
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('maracuya') ||
+            mensajeNormalizado.includes('maracuyá')
+        ) {
+            return 'El maracuyá forma parte de nuestra variedad de productos. Puedes visitar la sección Productos para conocer más.';
+        }
+
+        // =================================================
+        // UBICACIÓN
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('ubicacion') ||
+            mensajeNormalizado.includes('ubicación') ||
+            mensajeNormalizado.includes('direccion') ||
+            mensajeNormalizado.includes('dirección') ||
+            mensajeNormalizado.includes('donde') ||
+            mensajeNormalizado.includes('dónde') ||
+            mensajeNormalizado.includes('ubicados') ||
+            mensajeNormalizado.includes('encuentran')
+        ) {
+            return '📍 Nos encontramos en Calle El Maestro #610, Motupe, Lambayeque - Perú.';
+        }
+
+        // =================================================
+        // HORARIO DE ATENCIÓN
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('horario') ||
+            mensajeNormalizado.includes('horarios') ||
+            mensajeNormalizado.includes('hora') ||
+            mensajeNormalizado.includes('horas') ||
+            mensajeNormalizado.includes('atienden') ||
+            mensajeNormalizado.includes('atencion') ||
+            mensajeNormalizado.includes('atención') ||
+            mensajeNormalizado.includes('abierto') ||
+            mensajeNormalizado.includes('abren') ||
+            mensajeNormalizado.includes('cierran')
+        ) {
+            return '🕐 Nuestro horario de atención es de lunes a viernes de 8:00 a.m. a 5:00 p.m. y los sábados de 8:00 a.m. a 1:00 p.m. Los domingos no contamos con horario de atención programado.';
+        }
+
+        // =================================================
+        // LUNES A VIERNES
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('lunes') ||
+            mensajeNormalizado.includes('martes') ||
+            mensajeNormalizado.includes('miercoles') ||
+            mensajeNormalizado.includes('miércoles') ||
+            mensajeNormalizado.includes('jueves') ||
+            mensajeNormalizado.includes('viernes')
+        ) {
+            return '🕐 De lunes a viernes atendemos de 8:00 a.m. a 5:00 p.m.';
+        }
+
+        // =================================================
+        // SÁBADO
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('sabado') ||
+            mensajeNormalizado.includes('sábado')
+        ) {
+            return '🕐 Los sábados atendemos de 8:00 a.m. a 1:00 p.m.';
+        }
+
+        // =================================================
+        // DOMINGO
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('domingo')
+        ) {
+            return '🕐 Los domingos no contamos con horario de atención programado.';
+        }
+
+        // =================================================
+        // CELULAR / TELÉFONO
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('celular') ||
+            mensajeNormalizado.includes('telefono') ||
+            mensajeNormalizado.includes('teléfono') ||
+            mensajeNormalizado.includes('numero') ||
+            mensajeNormalizado.includes('número') ||
+            mensajeNormalizado.includes('llamar') ||
+            mensajeNormalizado.includes('cel')
+        ) {
+            return '📱 Puedes comunicarte con Agrofrutos al +51 981 540 331.';
+        }
+
+        // =================================================
+        // CORREO
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('correo') ||
+            mensajeNormalizado.includes('email') ||
+            mensajeNormalizado.includes('e-mail')
+        ) {
+            return '📧 Nuestro correo electrónico es info@agrofruto.pe.';
+        }
+
+        // =================================================
+        // CONTACTO
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('contacto') ||
+            mensajeNormalizado.includes('contactar') ||
+            mensajeNormalizado.includes('comunicarme') ||
+            mensajeNormalizado.includes('comunicarse')
+        ) {
+            return 'Puedes comunicarte con Agrofrutos mediante nuestro formulario de Contacto, al celular +51 981 540 331 o mediante el correo info@agrofruto.pe.';
+        }
+
+        // =================================================
+        // NOSOTROS / EMPRESA
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('nosotros') ||
+            mensajeNormalizado.includes('empresa') ||
+            mensajeNormalizado.includes('quienes son') ||
+            mensajeNormalizado.includes('quiénes son') ||
+            mensajeNormalizado.includes('que es agrofrutos') ||
+            mensajeNormalizado.includes('qué es agrofrutos')
+        ) {
+            return 'Agrofrutos está orientado a la producción y comercialización de frutas de calidad. Puedes visitar la sección Nosotros para conocer más sobre nuestra empresa.';
+        }
+
+        // =================================================
+        // GALERÍA
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('galeria') ||
+            mensajeNormalizado.includes('galería') ||
+            mensajeNormalizado.includes('fotos') ||
+            mensajeNormalizado.includes('imagenes') ||
+            mensajeNormalizado.includes('imágenes')
+        ) {
+            return '📸 Puedes visitar nuestra sección Galería para conocer imágenes relacionadas con nuestros productos y actividades.';
+        }
+
+        // =================================================
+        // AGRADECIMIENTO
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('gracias') ||
+            mensajeNormalizado.includes('muchas gracias')
+        ) {
+            return '¡Con mucho gusto! 😊 Estamos para ayudarte con información sobre Agrofrutos.';
+        }
+
+        // =================================================
+        // DESPEDIDA
+        // =================================================
+
+        if (
+            mensajeNormalizado.includes('adios') ||
+            mensajeNormalizado.includes('adiós') ||
+            mensajeNormalizado.includes('chau') ||
+            mensajeNormalizado.includes('hasta luego')
+        ) {
+            return '¡Hasta luego! 👋 Gracias por visitar Agrofrutos.';
+        }
+
+        // =================================================
+        // PREGUNTAS FUERA DEL TEMA
+        // =================================================
+
+        return 'Lo siento, solo puedo ayudarte con información relacionada con Agrofrutos, como nuestros productos, ubicación, horario de atención, celular, correo, galería y contacto. 😊';
+    }
+
+    // =====================================================
+    // ENVIAR MENSAJE
+    // =====================================================
+
+    function enviarMensaje() {
+        const mensaje = chatbotInput.value.trim();
+
+        if (mensaje === '') {
+            return;
+        }
+
+        agregarMensaje(
+            mensaje,
+            'usuario'
+        );
+
+        chatbotInput.value = '';
+
+        const respuesta = obtenerRespuesta(mensaje);
+
+        setTimeout(() => {
+            agregarMensaje(
+                respuesta,
+                'bot'
+            );
+        }, 500);
+    }
+
+    // =====================================================
+    // ABRIR CHATBOT
+    // =====================================================
+
+    chatbotButton.addEventListener(
+        'click',
+        () => {
+            chatbotWindow.classList.remove('hidden');
+            chatbotInput.focus();
+        }
+    );
+
+    // =====================================================
+    // CERRAR Y BORRAR CONVERSACIÓN
+    // =====================================================
+
+    chatbotClose.addEventListener(
+        'click',
+        () => {
+            limpiarConversacion();
+
+            chatbotWindow.classList.add('hidden');
+        }
+    );
+
+    // =====================================================
+    // BOTÓN ENVIAR
+    // =====================================================
+
+    chatbotSend.addEventListener(
+        'click',
+        () => {
+            enviarMensaje();
+        }
+    );
+
+    // =====================================================
+    // ENTER PARA ENVIAR
+    // =====================================================
+
+    chatbotInput.addEventListener(
+        'keydown',
+        (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                enviarMensaje();
+            }
+        }
+    );
+}
 });
 
