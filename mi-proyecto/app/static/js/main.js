@@ -627,6 +627,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+
+    // =========================================================
+    // BOTÓN "VER CATÁLOGO COMPLETO" -> GALERÍA
+    // =========================================================
+
+    const btnVerCatalogo =
+        document.getElementById('btnVerCatalogo');
+
+    if (btnVerCatalogo) {
+
+        btnVerCatalogo.addEventListener(
+            'click',
+            (event) => {
+
+                event.preventDefault();
+
+                window.location.href =
+                    btnVerCatalogo.dataset.galeriaUrl;
+
+            }
+        );
+    }
+
     // 1. BOTÓN "VOLVER ARRIBA" (Scroll to Top)
     const btnScrollTop = document.getElementById('btnScrollTop');
     if (btnScrollTop) {
@@ -1181,4 +1204,3 @@ if (
     );
 }
 });
-
