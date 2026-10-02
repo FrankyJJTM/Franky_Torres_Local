@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Agrofrutos{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen relative">
+
+    <header id="navbarHeader" class="bg-white sticky top-0 z-50 transition-shadow duration-300">
+        {% set ep = request.endpoint %}
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div id="logoAgrofrutos" data-home-url="{{ url_for('clientes.home') }}" class="flex items-center gap-3 cursor-pointer" role="button" tabindex="0" aria-label="Ir al inicio">
+                <div class="w-10 h-10 rounded-full bg-emerald-800 flex items-center justify-center text-amber-400 font-bold text-xl shadow">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <span class="font-extrabold text-xl tracking-wider text-emerald-900">AGROFRUTOS</span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-700">
+                <a href="{{ url_for('clientes.home') }}" class="nav-link hover:text-emerald-800 transition {% if ep == 'clientes.home' %}active{% endif %}">INICIO</a>
+                <a href="{{ url_for('clientes.productos') }}" class="nav-link hover:text-emerald-800 transition {% if ep == 'clientes.productos' %}active{% endif %}">PRODUCTOS</a>
+                <a href="{{ url_for('clientes.nosotros') }}" class="nav-link hover:text-emerald-800 transition {% if ep == 'clientes.nosotros' %}active{% endif %}">NOSOTROS</a>
+                <a href="{{ url_for('clientes.galeria') }}" class="nav-link hover:text-emerald-800 transition {% if ep == 'clientes.galeria' %}active{% endif %}">GALERIA</a>
+                <a href="{{ url_for('clientes.registro_productor') }}" class="nav-link hover:text-emerald-800 transition {% if ep == 'clientes.registro_productor' %}active{% endif %}">REGISTRO</a>
+                
+                <!-- BOTÓN DE IDIOMA EN ESCRITORIO -->
+                <button type="button" onclick="toggleLanguage()" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 px-3 py-1.5 rounded-full text-xs font-bold transition border border-slate-200 shadow-sm cursor-pointer">
+                    <i class="fa-solid fa-globe text-emerald-800"></i>
+                    <span id="txtLangBtn">EN</span>
+                </button>
+            </nav>
+
+            <a href="{{ url_for('clientes.contacto') }}" class="btn-contacto hidden md:inline-flex bg-emerald-900 hover:bg-emerald-950 text-white font-semibold text-xs tracking-widest px-6 py-2.5 rounded-full transition shadow {% if ep == 'clientes.contacto' %}active{% endif %}">
+                CONTACTO
+            </a>
+
+            <button id="btnMenu" class="md:hidden text-emerald-900 text-2xl" aria-expanded="false" aria-controls="menuMovil" aria-label="Abrir menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="menuMovil" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-3 font-semibold text-sm text-slate-700">
+            <a href="{{ url_for('clientes.home') }}" class="nav-movil block py-1 {% if ep == 'clientes.home' %}active{% endif %}">INICIO</a>
+            <a href="{{ url_for('clientes.productos') }}" class="nav-movil block py-1 {% if ep == 'clientes.productos' %}active{% endif %}">PRODUCTOS</a>
+            <a href="{{ url_for('clientes.nosotros') }}" class="nav-movil block py-1 {% if ep == 'clientes.nosotros' %}active{% endif %}">NOSOTROS</a>
+            <a href="{{ url_for('clientes.galeria') }}" class="nav-movil block py-1 {% if ep == 'clientes.galeria' %}active{% endif %}">GALERIA</a>
+            <a href="{{ url_for('clientes.registro_productor') }}" class="nav-movil block py-1 {% if ep == 'clientes.registro_productor' %}active{% endif %}">REGISTRO</a>
+            
+            <!-- BOTÓN DE IDIOMA EN MÓVIL -->
+            <button type="button" onclick="toggleLanguage()" class="w-full flex items-center justify-center gap-2 bg-slate-100 text-slate-800 py-2 rounded-full text-xs font-bold border border-slate-200 my-2">
+                <i class="fa-solid fa-globe text-emerald-800"></i>
+                <span id="txtLangBtnMobile">EN</span>
+            </button>
+
+            <a href="{{ url_for('clientes.contacto') }}" class="block bg-emerald-900 text-white text-center py-2.5 rounded-full mt-2 {% if ep == 'clientes.contacto' %}ring-amber{% endif %}">CONTACTO</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-emerald-950 text-slate-200 mt-16 pt-16 pb-8 border-t border-emerald-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-emerald-900/60">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-amber-400">
+                            <i class="fa-solid fa-leaf text-sm"></i>
+                        </div>
+                        <span class="font-bold text-lg text-white tracking-wider">AGROFRUTOS</span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-xs">
+                        Comprometidos con la producción y exportación de frutas orgánicas de alta calidad desde Lambayeque para el mundo.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-amber-500 font-bold text-xs tracking-widest uppercase mb-4">Enlaces</h4>
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li><a href="{{ url_for('clientes.home') }}" class="hover:text-white transition">Inicio</a></li>
+                        <li><a href="{{ url_for('clientes.productos') }}" class="hover:text-white transition">Productos</a></li>
+                        <li><a href="{{ url_for('clientes.nosotros') }}" class="hover:text-white transition">Nosotros</a></li>
+                        <li><a href="{{ url_for('clientes.galeria') }}" class="hover:text-white transition">Galería</a></li>
+                    </ul>
+                </div>
+
+                <div id="contacto">
+                    <h4 class="text-amber-500 font-bold text-xs tracking-widest uppercase mb-4">Contacto</h4>
+                    <p class="text-sm text-slate-300 mb-2"><i class="fa-solid fa-location-dot mr-2 text-emerald-500"></i> Fundo San José, Motupe, Lambayeque - Perú</p>
+                    <p class="text-sm text-slate-300"><i class="fa-solid fa-envelope mr-2 text-emerald-500"></i> contacto@agrofrutos.pe</p>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
+                <p>© 2026 Agrofrutos. Todos los derechos reservados.</p>
+                <div class="flex items-center gap-4 text-base">
+                    <a href="#" class="hover:text-amber-400 transition" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN VOLVER ARRIBA -->
+    <button 
+        id="btnScrollTop" 
+        class="hidden fixed bottom-6 right-6 bg-amber-400 hover:bg-amber-500 text-emerald-950 w-11 h-11 rounded-full shadow-lg transition-all flex items-center justify-center z-50 cursor-pointer"
+        aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- CHATBOT AGROFRUTOS -->
+    <div class="chatbot-container">
+        <button
+            id="chatbot-button"
+            class="chatbot-button"
+            type="button"
+            aria-label="Abrir asistente virtual"
+            title="Abrir asistente virtual"
+        >
+            <i class="fa-solid fa-comments"></i>
+        </button>
+
+        <div
+            id="chatbot-window"
+            class="chatbot-window hidden"
+        >
+            <div class="chatbot-header">
+                <div>
+                    <h2>Agrofrutos</h2>
+                    <span>Asistente virtual</span>
+                </div>
+
+                <button
+                    id="chatbot-close"
+                    class="chatbot-close"
+                    type="button"
+                    aria-label="Cerrar chatbot"
+                    title="Cerrar chatbot"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div
+                id="chatbot-messages"
+                class="chatbot-messages"
+            >
+                <div class="chatbot-message chatbot-message-bot">
+                    ¡Hola! 👋 Soy el asistente virtual de Agrofrutos.
+                    ¿En qué podemos ayudarte?
+                </div>
+            </div>
+
+            <div class="chatbot-input-container">
+                <input
+                    id="chatbot-input"
+                    class="chatbot-input"
+                    type="text"
+                    placeholder="Escribe tu mensaje..."
+                    autocomplete="off"
+                    aria-label="Escribe tu mensaje"
+                >
+
+                <button
+                    id="chatbot-send"
+                    class="chatbot-send"
+                    type="button"
+                    aria-label="Enviar mensaje"
+                    title="Enviar mensaje"
+                >
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>      
+
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

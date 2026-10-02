@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% block title %}Agrofrutos - Galería de Cosecha{% endblock %}
+
+{% block content %}
+<section class="relative bg-emerald-950 text-white py-20 px-4 text-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="{{ url_for('static', filename='img/galeria/paltayfruta.jpg') }}" alt="Galería Agrofrutos" class="w-full h-full object-cover opacity-25">
+        <div class="absolute inset-0 bg-emerald-950/70"></div>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto space-y-3">
+        <span class="inline-block bg-amber-500/90 text-slate-950 font-bold text-[10px] tracking-widest uppercase px-4 py-1.5 rounded-full shadow-sm mb-1">
+            CONOCE NUESTRO ORIGEN
+        </span>
+        <h1 class="text-3xl md:text-5xl font-serif tracking-wide uppercase font-light">
+            GALERÍA DE COSECHA
+        </h1>
+        <p class="text-slate-200 text-xs md:text-sm font-light max-w-lg mx-auto leading-relaxed">
+            Descubre nuestra tierra, la biodiversidad de Lambayeque y el trabajo dedicado que hay detrás de cada fruta de exportación.
+        </p>
+    </div>
+</section>
+
+<section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+        <!-- PALTA -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-4 bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-emerald-800 text-amber-400 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </div>
+                    <h2 class="text-2xl font-serif font-bold text-slate-900 tracking-wider">PALTA</h2>
+                </div>
+
+                <p class="text-slate-500 text-xs leading-relaxed">
+                    Nuestras paltas de variedad Hass son cultivadas bajo estrictos estándares orgánicos en los valles de Lambayeque, garantizando una textura sumamente cremosa, rico sabor y un alto valor nutricional óptimo para exportación.
+                </p>
+
+                <div class="pt-2 border-t border-slate-100 space-y-1">
+                    <span class="text-[10px] font-bold tracking-widest text-amber-600 uppercase block">ORIGEN Y CUIDADO</span>
+                    <h4 class="text-xs font-bold text-slate-800">Valle de Olmos, Lambayeque</h4>
+                    <ul class="text-[11px] text-slate-500 space-y-0.5 pt-1">
+                        <li>• Cultivo 100% Orgánico certificado</li>
+                        <li>• Riego tecnificado de precisión</li>
+                    </ul>
+                </div>
+
+                <a href="#" class="inline-flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-emerald-800 transition pt-2">
+                    Ver ficha técnica <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <div class="lg:col-span-8 space-y-4 gallery-container">
+                <div class="h-80 md:h-96 rounded-3xl overflow-hidden shadow-sm border border-slate-200">
+                    <img src="{{ url_for('static', filename='img/galeria/palta-galeria.jpg') }}" alt="Campo de Palta" class="gallery-main-image w-full h-full object-cover transition-opacity duration-300">
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex flex-wrap gap-3 w-full sm:w-auto">
+                        <img src="{{ url_for('static', filename='img/galeria/palta5.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/palta5.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border-2 border-amber-400 cursor-pointer shadow-sm" alt="Palta 1">
+                        <img src="{{ url_for('static', filename='img/galeria/palta4.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/palta4.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Palta 2">
+                        <img src="{{ url_for('static', filename='img/galeria/palta3.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/palta3.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Palta 3">
+                        <img src="{{ url_for('static', filename='img/galeria/paltas2.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/paltas2.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Palta 4">
+                        <img src="{{ url_for('static', filename='img/galeria/paltas1.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/paltas1.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Palta 5">
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="gallery-dots flex gap-1.5"></div>
+
+                        <div class="flex gap-1">
+                            <button type="button" class="gallery-prev w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button type="button" class="gallery-next w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MANGO -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-4 bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </div>
+                    <h2 class="text-2xl font-serif font-bold text-slate-900 tracking-wider">MANGO</h2>
+                </div>
+
+                <p class="text-slate-500 text-xs leading-relaxed">
+                    Mangos Kent frescos, extremadamente dulces y jugosos, cosechados cuidadosamente a mano por las familias de la cooperativa. Libres de pesticidas, respetando el ciclo natural y la biodiversidad de nuestras tierras.
+                </p>
+
+                <div class="pt-2 border-t border-slate-100 space-y-1">
+                    <span class="text-[10px] font-bold tracking-widest text-amber-600 uppercase block">ORIGEN Y CUIDADO</span>
+                    <h4 class="text-xs font-bold text-slate-800">Valle de Olmos, Lambayeque</h4>
+                    <ul class="text-[11px] text-slate-500 space-y-0.5 pt-1">
+                        <li>• Cultivo 100% Orgánico certificado</li>
+                        <li>• Riego tecnificado de precisión</li>
+                    </ul>
+                </div>
+
+                <a href="#" class="inline-flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-emerald-800 transition pt-2">
+                    Ver ficha técnica <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <div class="lg:col-span-8 space-y-4 gallery-container">
+                <div class="h-80 md:h-96 rounded-3xl overflow-hidden shadow-sm border border-slate-200">
+                    <img src="{{ url_for('static', filename='img/galeria/mango-galeria.jpg') }}" alt="Árbol de Mango" class="gallery-main-image w-full h-full object-cover transition-opacity duration-300">
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex flex-wrap gap-3 w-full sm:w-auto">
+                        <img src="{{ url_for('static', filename='img/galeria/mango1.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/mango1.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border-2 border-amber-400 cursor-pointer shadow-sm" alt="Mango 1">
+                        <img src="{{ url_for('static', filename='img/galeria/mango2.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/mango2.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Mango 2">
+                        <img src="{{ url_for('static', filename='img/galeria/mango3.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/mango3.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Mango 3">
+                        <img src="{{ url_for('static', filename='img/galeria/mango4.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/mango4.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Mango 4">
+                        <img src="{{ url_for('static', filename='img/galeria/mango5.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/mango5.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Mango 5">
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="gallery-dots flex gap-1.5"></div>
+
+                        <div class="flex gap-1">
+                            <button type="button" class="gallery-prev w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button type="button" class="gallery-next w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MARACUYÁ -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <div class="lg:col-span-4 bg-white rounded-3xl p-6 shadow-sm border border-slate-200 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-emerald-800 text-amber-400 flex items-center justify-center font-bold">
+                        <i class="fa-solid fa-xmark text-sm"></i>
+                    </div>
+                    <h2 class="text-2xl font-serif font-bold text-slate-900 tracking-wider">MARACUYÁ</h2>
+                </div>
+
+                <p class="text-slate-500 text-xs leading-relaxed">
+                    Fruta de la pasión con un intenso aroma tropical y acidez equilibrada perfecta. Producida de manera ecológica en Lambayeque por productores locales, ideal para jugos puros, pulpa de calidad y exportación selecta.
+                </p>
+
+                <div class="pt-2 border-t border-slate-100 space-y-1">
+                    <span class="text-[10px] font-bold tracking-widest text-amber-600 uppercase block">ORIGEN Y CUIDADO</span>
+                    <h4 class="text-xs font-bold text-slate-800">Valle de Olmos, Lambayeque</h4>
+                    <ul class="text-[11px] text-slate-500 space-y-0.5 pt-1">
+                        <li>• Cultivo 100% Orgánico certificado</li>
+                        <li>• Riego tecnificado de precisión</li>
+                    </ul>
+                </div>
+
+                <a href="#" class="inline-flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-emerald-800 transition pt-2">
+                    Ver ficha técnica <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                </a>
+            </div>
+
+            <div class="lg:col-span-8 space-y-4 gallery-container">
+                <div class="h-80 md:h-96 rounded-3xl overflow-hidden shadow-sm border border-slate-200">
+                    <img src="{{ url_for('static', filename='img/galeria/maracuya-galeria.jpg') }}" alt="Planta de Maracuyá" class="gallery-main-image w-full h-full object-cover transition-opacity duration-300">
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex flex-wrap gap-3 w-full sm:w-auto">
+                        <img src="{{ url_for('static', filename='img/galeria/maracuya1.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/maracuya1.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border-2 border-amber-400 cursor-pointer shadow-sm" alt="Maracuyá 1">
+                        <img src="{{ url_for('static', filename='img/galeria/maracuya2.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/maracuya2.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Maracuyá 2">
+                        <img src="{{ url_for('static', filename='img/galeria/maracuya3.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/maracuya3.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Maracuyá 3">
+                        <img src="{{ url_for('static', filename='img/galeria/maracuya4.jpg') }}" data-image="{{ url_for('static', filename='img/galeria/maracuya4.jpg') }}" class="gallery-thumbnail w-20 h-14 object-cover rounded-xl border border-transparent hover:border-slate-300 cursor-pointer" alt="Maracuyá 4">
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <div class="gallery-dots flex gap-1.5"></div>
+
+                        <div class="flex gap-1">
+                            <button type="button" class="gallery-prev w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button type="button" class="gallery-next w-7 h-7 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-slate-100 text-xs">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

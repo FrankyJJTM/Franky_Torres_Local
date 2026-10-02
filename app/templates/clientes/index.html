@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}Agrofrutos - Nuestra Tierra, Tu Cosecha{% endblock %}
+
+{% block content %}
+<!-- SECCIÓN SLIDER -->
+<section class="relative bg-slate-900 text-white h-[340px] md:h-[400px] flex items-start overflow-hidden hero-borde-inferior">
+    <div class="slider-container absolute inset-0 w-full h-full">
+        <!-- Slide 1 -->
+        <div class="slide active absolute inset-0 opacity-100">
+            <img src="{{ url_for('static', filename='img/inicio/palta1.jpg') }}" alt="Campo agrícola" class="w-full h-full object-cover">
+            <div class="hero-overlay"></div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide absolute inset-0 opacity-0">
+            <img src="{{ url_for('static', filename='img/inicio/palta2.jpg') }}" alt="Cosecha de frutas" class="w-full h-full object-cover">
+            <div class="hero-overlay"></div>
+        </div>
+    </div>
+
+    <!-- Texto sobre el Slider -->
+    <div class="relative px-6 sm:px-10 lg:px-16 pt-10 md:pt-14 z-10">
+        <span class="text-amber-400 text-[10px] font-bold tracking-widest uppercase mb-2 block">
+            Sabor &amp; Frescura de Exportación
+        </span>
+        <h1 class="text-2xl md:text-3xl font-serif font-bold leading-snug mb-3 max-w-md">
+            NUESTRA TIERRA,<br>TU COSECHA
+        </h1>
+        <p class="text-slate-200 text-xs md:text-sm max-w-sm mb-5 leading-relaxed font-light">
+            Sostenibilidad, frescura y calidad de exportación en cada fruta cultivada bajo estrictos estándares ecológicos.
+        </p>
+        <a href="#productos" class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-[11px] uppercase tracking-wider px-5 py-2.5 rounded-full shadow-lg transition transform hover:-translate-y-0.5">
+            Conoce nuestros productos <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <!-- Controles Slider -->
+    <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center transition">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <!-- Indicadores -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2" id="sliderDots">
+        <button class="dot w-3 h-3 rounded-full bg-amber-400"></button>
+        <button class="dot w-3 h-3 rounded-full bg-white/50 hover:bg-white"></button>
+    </div>
+</section>
+
+<!-- SECCIÓN PRODUCTOS -->
+<section id="productos" class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <div class="inline-flex items-center justify-center text-emerald-800 mb-2">
+                <span class="w-8 h-[1px] bg-emerald-800 mr-2"></span>
+                <i class="fa-solid fa-leaf text-sm"></i>
+                <span class="w-8 h-[1px] bg-emerald-800 ml-2"></span>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-emerald-950 tracking-wider">NUESTROS PRODUCTOS</h2>
+            <p class="text-xs md:text-sm text-slate-500 mt-1">Frutas de nuestra tierra, con el mejor sabor y calidad.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Palta -->
+            <div class="bg-white rounded-2xl card-shadow tarjeta-hover border border-slate-100 overflow-hidden">
+                <div class="relative h-52">
+                    <img src="{{ url_for('static', filename='img/inicio/palta.jpg') }}" alt="Palta Hass" class="w-full h-full object-cover">
+                    <div class="absolute -bottom-4 left-6 w-9 h-9 bg-emerald-800 text-white rounded-full flex items-center justify-center border-2 border-white shadow">
+                        <i class="fa-solid fa-seedling text-xs"></i>
+                    </div>
+                </div>
+                <div class="p-6 pt-8">
+                    <h3 class="font-bold text-slate-800 text-lg uppercase tracking-wide mb-2">PALTA</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed mb-6">
+                        Palta Hass cultivada bajo estrictos estándares orgánicos. Posee una textura cremosa, rico sabor y un alto valor nutricional.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 bg-emerald-900 hover:bg-emerald-950 text-white text-xs font-semibold px-5 py-2 rounded-full transition">
+                        Ver más <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mango -->
+            <div class="bg-white rounded-2xl card-shadow tarjeta-hover border border-slate-100 overflow-hidden">
+                <div class="relative h-52">
+                    <img src="{{ url_for('static', filename='img/inicio/mango.jpg') }}" alt="Mango" class="w-full h-full object-cover">
+                    <div class="absolute -bottom-4 left-6 w-9 h-9 bg-amber-500 text-white rounded-full flex items-center justify-center border-2 border-white shadow">
+                        <i class="fa-solid fa-sun text-xs"></i>
+                    </div>
+                </div>
+                <div class="p-6 pt-8">
+                    <h3 class="font-bold text-slate-800 text-lg uppercase tracking-wide mb-2">MANGO</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed mb-6">
+                        Mangos frescos, dulces y jugosos, cosechados a mano en su punto óptimo de maduración. Libres de pesticidas.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 bg-emerald-900 hover:bg-emerald-950 text-white text-xs font-semibold px-5 py-2 rounded-full transition">
+                        Ver más <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Maracuyá -->
+            <div class="bg-white rounded-2xl card-shadow tarjeta-hover border border-slate-100 overflow-hidden">
+                <div class="relative h-52">
+                    <img src="{{ url_for('static', filename='img/inicio/maracuya.jpg') }}" alt="Maracuyá" class="w-full h-full object-cover">
+                    <div class="absolute -bottom-4 left-6 w-9 h-9 bg-amber-500 text-white rounded-full flex items-center justify-center border-2 border-white shadow">
+                        <i class="fa-solid fa-lemon text-xs"></i>
+                    </div>
+                </div>
+                <div class="p-6 pt-8">
+                    <h3 class="font-bold text-slate-800 text-lg uppercase tracking-wide mb-2">MARACUYÁ</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed mb-6">
+                        Fruta de la pasión de intenso aroma y acidez equilibrada. Producida de forma ecológica, perfecta para jugos y pulpas.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 bg-emerald-900 hover:bg-emerald-950 text-white text-xs font-semibold px-5 py-2 rounded-full transition">
+                        Ver más <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CALL TO ACTION BANNER -->
+<section class="bg-emerald-900 text-white py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+            <h3 class="text-xl md:text-2xl font-bold">¿Quieres explorar toda nuestra variedad?</h3>
+            <p class="text-emerald-100 text-xs md:text-sm mt-1">Ofrecemos frutas de estación premium, envasadas y transportadas bajo óptimas condiciones.</p>
+        </div>
+        <a href="#" id="btnVerCatalogo" data-galeria-url="{{ url_for('clientes.galeria') }}" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider px-6 py-3 rounded-full transition shadow-md whitespace-nowrap">
+            VER CATÁLOGO COMPLETO
+        </a>
+    </div>
+</section>
+{% endblock %}
