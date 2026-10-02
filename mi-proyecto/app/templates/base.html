@@ -11,7 +11,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen relative">
 
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header id="navbarHeader" class="bg-white sticky top-0 z-50 transition-shadow duration-300">
         {% set ep = request.endpoint %}
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div id="logoAgrofrutos" data-home-url="{{ url_for('clientes.home') }}" class="flex items-center gap-3 cursor-pointer" role="button" tabindex="0" aria-label="Ir al inicio">

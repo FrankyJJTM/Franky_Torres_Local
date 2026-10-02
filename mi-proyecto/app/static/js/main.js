@@ -1204,3 +1204,20 @@ if (
     );
 }
 });
+
+
+// =========================================================
+// SOMBRA EN EL NAVBAR AL HACER SCROLL
+// =========================================================
+
+const navbarHeader = document.getElementById('navbarHeader');
+
+if (navbarHeader) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 10) {
+            navbarHeader.style.boxShadow = '0 8px 20px rgba(6, 78, 59, 0.55)';
+        } else {
+            navbarHeader.style.boxShadow = 'none';
+        }
+    });
+}
