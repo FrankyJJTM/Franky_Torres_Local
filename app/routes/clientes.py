@@ -33,7 +33,3 @@ def contacto():
         return render_template('clientes/form.html', mensajeEnviado=True)
 
     return render_template('clientes/form.html')
-
-@clientes_bp.route('/registro-productor')
-def registro_productor():
-    return render_template('clientes/registro_productor.html')

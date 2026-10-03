@@ -8,7 +8,7 @@
     box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
 }
 
-/* ===== Overlay oscuro sobre el hero (reemplaza el degradado de Tailwind) ===== */
+/* ===== Overlay oscuro sobre el hero ===== */
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -29,7 +29,7 @@
     transform: translateY(-4px);
 }
 
-/* ===== Íconos circulares de la sección "Nuestros valores" (página Nosotros) ===== */
+/* ===== Íconos circulares de la sección "Nuestros valores" ===== */
 .valor-icono {
     width: 3.5rem;
     height: 3.5rem;
@@ -83,14 +83,14 @@
 }
 
 /* =========================================================
-   BOTONES DE CATEGORÍA: letra verde cuando el botón es blanco
+   BOTONES DE CATEGORÍA
    ========================================================= */
 
 .product-category-button.bg-white {
     color: #064e3b;
 }
 
-/* Al pasar el mouse: fondo verde muy suave y la letra sigue verde */
+/* Al pasar el mouse: fondo verde muy suave */
 .product-category-button.bg-white:hover {
     background-color: #ecfdf5;
     color: #064e3b;

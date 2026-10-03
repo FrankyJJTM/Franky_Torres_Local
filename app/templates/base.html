@@ -26,7 +26,6 @@
                 <a href="{{ url_for('clientes.productos') }}" class="nav-link hover:text-emerald-800 transition {% if ep == 'clientes.productos' %}active{% endif %}">PRODUCTOS</a>
                 <a href="{{ url_for('clientes.nosotros') }}" class="nav-link hover:text-emerald-800 transition {% if ep == 'clientes.nosotros' %}active{% endif %}">NOSOTROS</a>
                 <a href="{{ url_for('clientes.galeria') }}" class="nav-link hover:text-emerald-800 transition {% if ep == 'clientes.galeria' %}active{% endif %}">GALERIA</a>
-                <a href="{{ url_for('clientes.registro_productor') }}" class="nav-link hover:text-emerald-800 transition {% if ep == 'clientes.registro_productor' %}active{% endif %}">REGISTRO</a>
                 
                 <!-- BOTÓN DE IDIOMA EN ESCRITORIO -->
                 <button type="button" onclick="toggleLanguage()" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 px-3 py-1.5 rounded-full text-xs font-bold transition border border-slate-200 shadow-sm cursor-pointer">
@@ -49,7 +48,6 @@
             <a href="{{ url_for('clientes.productos') }}" class="nav-movil block py-1 {% if ep == 'clientes.productos' %}active{% endif %}">PRODUCTOS</a>
             <a href="{{ url_for('clientes.nosotros') }}" class="nav-movil block py-1 {% if ep == 'clientes.nosotros' %}active{% endif %}">NOSOTROS</a>
             <a href="{{ url_for('clientes.galeria') }}" class="nav-movil block py-1 {% if ep == 'clientes.galeria' %}active{% endif %}">GALERIA</a>
-            <a href="{{ url_for('clientes.registro_productor') }}" class="nav-movil block py-1 {% if ep == 'clientes.registro_productor' %}active{% endif %}">REGISTRO</a>
             
             <!-- BOTÓN DE IDIOMA EN MÓVIL -->
             <button type="button" onclick="toggleLanguage()" class="w-full flex items-center justify-center gap-2 bg-slate-100 text-slate-800 py-2 rounded-full text-xs font-bold border border-slate-200 my-2">
