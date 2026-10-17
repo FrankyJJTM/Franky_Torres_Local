@@ -46,7 +46,9 @@ window.googleTranslateElementInit = function() {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ANIMACIÓN DEL LOGO
+    // =========================================================
+    // ANIMACIÓN DEL LOGO AL CARGAR
+    // =========================================================
     const pageTransition = document.createElement('div');
     pageTransition.className = 'logo-page-transition';
     pageTransition.setAttribute('aria-hidden', 'true');
@@ -83,7 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentLang = localStorage.getItem('site_lang') || 'es';
     window.updateButtonUI(currentLang);
 
+    // =========================================================
     // MENÚ HAMBURGUESA
+    // =========================================================
     const btnMenu = document.getElementById('btnMenu');
     const menuMovil = document.getElementById('menuMovil');
 
@@ -117,7 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // =========================================================
     // NAVEGACIÓN DEL LOGO AL INICIO
+    // =========================================================
     const logoAgrofrutos = document.getElementById('logoAgrofrutos');
     if (logoAgrofrutos) {
         const homeUrl = logoAgrofrutos.dataset.homeUrl;
@@ -134,7 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // =========================================================
     // BOTÓN VOLVER ARRIBA
+    // =========================================================
     const btnScrollTop = document.getElementById('btnScrollTop');
     if (btnScrollTop) {
         window.addEventListener('scroll', () => {
@@ -149,7 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // =========================================================
     // SOMBRA EN EL NAVBAR AL HACER SCROLL
+    // =========================================================
     const navbarHeader = document.getElementById('navbarHeader');
     if (navbarHeader) {
         window.addEventListener('scroll', () => {
@@ -161,7 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // =========================================================
     // CHATBOT AGROFRUTOS
+    // =========================================================
     const chatbotButton = document.getElementById('chatbot-button');
     const chatbotWindow = document.getElementById('chatbot-window');
     const chatbotClose = document.getElementById('chatbot-close');
@@ -329,7 +341,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // =========================================================
     // MODO OSCURO
+    // =========================================================
     const btnTheme = document.getElementById('btnTheme');
     const btnThemeMobile = document.getElementById('btnThemeMobile');
     const themeStorageKey = 'agrofrutos-theme';
@@ -410,4 +424,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (btnTheme) btnTheme.addEventListener('click', toggleTheme);
     if (btnThemeMobile) btnThemeMobile.addEventListener('click', toggleTheme);
+
+    // =========================================================
+    // CONTADOR ANIMADO DE ESTADÍSTICAS (PÁGINA NOSOTROS)
+    // =========================================================
+    const contadores = document.querySelectorAll('.contador');
+    if (contadores.length > 0) {
+        const animarContador = (elemento) => {
+            if (elemento.classList.contains('animado')) return;
+            elemento.classList.add('animado');
+
+            const target = parseInt(elemento.dataset.target, 10);
+            if (isNaN(target)) return;
+
+            const suffix = elemento.dataset.suffix || '';
+            const duracion = 1500; // 1.5 segundos
+            const inicio = performance.now();
+
+            const paso = (ahora) => {
+                const progreso = Math.min((ahora - inicio) / duracion, 1);
+                const valorActual = Math.floor(progreso * target);
+
+                elemento.textContent = valorActual.toLocaleString('es-PE') + suffix;
+
+                if (progreso < 1) {
+                    requestAnimationFrame(paso);
+                } else {
+                    elemento.textContent = target.toLocaleString('es-PE') + suffix;
+                }
+            };
+
+            requestAnimationFrame(paso);
+        };
+
+        const observer = new IntersectionObserver((entradas) => {
+            entradas.forEach((entrada) => {
+                if (entrada.isIntersecting) {
+                    animarContador(entrada.target);
+                    observer.unobserve(entrada.target);
+                }
+            });
+        }, { threshold: 0.05 });
+
+        contadores.forEach((contador) => observer.observe(contador));
+    }
 });

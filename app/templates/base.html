@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Agrofrutos{% endblock %}</title>
 
+    <!-- Estilos principales -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Bloque opcional para cargar CSS específicos de cada vista (ej. productos.css, galeria.css) -->
+    {% block extra_head %}{% endblock %}
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen relative">
 
-    <header id="navbarHeader" class="bg-white sticky top-0 z-50 transition-shadow duration-300">
+    <header id="navbarHeader" class="bg-white sticky top-0 z-50 transition-shadow duration-300 shadow-sm">
         {% set ep = request.endpoint %}
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div id="logoAgrofrutos" data-home-url="{{ url_for('clientes.home') }}" class="flex items-center gap-3 cursor-pointer" role="button" tabindex="0" aria-label="Ir al inicio">
@@ -60,7 +65,7 @@
         </div>
 
         <!-- MENÚ MÓVIL -->
-        <div id="menuMovil" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-3 font-semibold text-sm text-slate-700">
+        <div id="menuMovil" class="hidden md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-3 font-semibold text-sm text-slate-700 shadow-lg">
             <a href="{{ url_for('clientes.home') }}" class="nav-movil block py-1 {% if ep == 'clientes.home' %}active{% endif %}">INICIO</a>
             <a href="{{ url_for('clientes.productos') }}" class="nav-movil block py-1 {% if ep == 'clientes.productos' %}active{% endif %}">PRODUCTOS</a>
             <a href="{{ url_for('clientes.nosotros') }}" class="nav-movil block py-1 {% if ep == 'clientes.nosotros' %}active{% endif %}">NOSOTROS</a>
@@ -122,7 +127,10 @@
                 <div id="contacto">
                     <h4 class="text-amber-500 font-bold text-xs tracking-widest uppercase mb-4">Contacto</h4>
                     <p class="text-sm text-slate-300 mb-2"><i class="fa-solid fa-location-dot mr-2 text-emerald-500"></i> Calle El Maestro #610, Motupe, Lambayeque - Perú</p>
-                    <p class="text-sm text-slate-300"><i class="fa-solid fa-envelope mr-2 text-emerald-500"></i> info@agrofruto.pe</p>
+                    <p class="text-sm text-slate-300">
+                        <i class="fa-solid fa-envelope mr-2 text-emerald-500"></i> 
+                        <a href="mailto:info@agrofrutos.pe" class="hover:text-white transition">info@agrofrutos.pe</a>
+                    </p>
                 </div>
             </div>
 
@@ -221,9 +229,11 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
+<!-- Scripts Base -->
     <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+    <!-- Bloque para scripts específicos de cada vista -->
     {% block scripts %}
     {% endblock %}
 
