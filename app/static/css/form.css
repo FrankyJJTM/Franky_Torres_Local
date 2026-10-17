@@ -1,0 +1,19 @@
+/* =========================================================
+   FORMULARIO DE CONTACTO
+   ========================================================= */
+
+.contador-mensaje {
+    display: block;
+    text-align: right;
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-top: 0.25rem;
+}
+
+.contador-mensaje.limite-cerca {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+body.dark-mode .contador-mensaje { color: #9ca3af; }
+body.dark-mode .contador-mensaje.limite-cerca { color: #f87171; }

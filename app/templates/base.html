@@ -12,13 +12,6 @@
 <body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen relative">
 
     <!-- MODO OSCURO: aplica el tema guardado antes de pintar (evita el parpadeo blanco) -->
-    <script>
-        try {
-            if (localStorage.getItem('agrofrutos-theme') === 'dark') {
-                document.body.classList.add('dark-mode');
-            }
-        } catch (e) {}
-    </script>
     <header id="navbarHeader" class="bg-white sticky top-0 z-50 transition-shadow duration-300">
         {% set ep = request.endpoint %}
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">

@@ -1,0 +1,11 @@
+/* =========================================================
+   PÁGINA DE GALERÍA
+   ========================================================= */
+
+.gallery-thumbnail {
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.gallery-thumbnail:hover {
+    transform: scale(1.05);
+}

@@ -1,0 +1,35 @@
+/* =========================================================
+   PÁGINA DE PRODUCTOS
+   ========================================================= */
+
+.product-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+}
+
+.product-category-button.bg-white {
+    color: #064e3b;
+}
+
+.product-category-button.bg-white:hover {
+    background-color: #ecfdf5;
+    color: #064e3b;
+}
+
+body.dark-mode .product-card .bg-emerald-50 {
+    background-color: #f8fafc !important;
+}
+
+body.dark-mode .product-category-button.bg-white {
+    background-color: #1f2937 !important;
+    color: #d1fae5 !important;
+    border-color: #4b5563 !important;
+}
+
+body.dark-mode .product-category-button.bg-white:hover {
+    background-color: #374151 !important;
+    color: #ffffff !important;
+}
