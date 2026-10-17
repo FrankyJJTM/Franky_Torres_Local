@@ -11,7 +11,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans flex flex-col min-h-screen relative">
 
-    <!-- MODO OSCURO: aplica el tema guardado antes de pintar (evita el parpadeo blanco) -->
     <header id="navbarHeader" class="bg-white sticky top-0 z-50 transition-shadow duration-300">
         {% set ep = request.endpoint %}
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -48,13 +47,8 @@
                 </button>
             </nav>
 
-            <!-- ACCIONES EN ESCRITORIO (LOGIN Y CONTACTO) -->
+            <!-- ACCIONES EN ESCRITORIO (SOLO CONTACTO) -->
             <div class="hidden md:flex items-center gap-3">
-                <a href="{{ url_for('clientes.login') }}" class="flex items-center gap-2 border border-emerald-900 text-emerald-900 hover:bg-emerald-900 hover:text-white font-semibold text-xs tracking-widest px-5 py-2.5 rounded-full transition {% if ep == 'clientes.login' %}bg-emerald-900 text-white{% endif %}">
-                    <i class="fa-solid fa-user"></i>
-                    <span>LOGIN</span>
-                </a>
-
                 <a href="{{ url_for('clientes.contacto') }}" class="btn-contacto bg-emerald-900 hover:bg-emerald-950 text-white font-semibold text-xs tracking-widest px-6 py-2.5 rounded-full transition shadow {% if ep == 'clientes.contacto' %}active{% endif %}">
                     CONTACTO
                 </a>
@@ -90,11 +84,6 @@
                 <i class="fa-solid fa-moon" aria-hidden="true"></i>
                 <span>Modo oscuro</span>
             </button>
-
-            <!-- BOTÓN DE LOGIN EN MÓVIL -->
-            <a href="{{ url_for('clientes.login') }}" class="block border border-emerald-900 text-emerald-900 font-semibold text-center py-2.5 rounded-full mt-3 hover:bg-emerald-900 hover:text-white transition {% if ep == 'clientes.login' %}bg-emerald-900 text-white{% endif %}">
-                <i class="fa-solid fa-user mr-2"></i> INICIAR SESIÓN
-            </a>
 
             <a href="{{ url_for('clientes.contacto') }}" class="block bg-emerald-900 text-white text-center py-2.5 rounded-full mt-2 {% if ep == 'clientes.contacto' %}ring-amber{% endif %}">CONTACTO</a>
         </div>
@@ -232,8 +221,11 @@
 
     <div id="google_translate_element" style="display:none;"></div>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    {% block scripts %}
+    {% endblock %}
 
 </body>
 </html>
