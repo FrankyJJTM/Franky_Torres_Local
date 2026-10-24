@@ -24,3 +24,68 @@
     box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.12);
     transform: translateY(-4px);
 }
+/* ===== CINTA ANIMADA ===== */
+
+/* Barra amarilla de borde a borde (mismo amarillo de tus botones) */
+.cinta {
+    width: 100%;
+    background: #f59e0b;
+    padding: 9px 0;                 /* antes 14px: más delgada */
+}
+
+/* Oculta lo que sale de la pantalla */
+.cinta-vista { overflow: hidden; }
+
+.cinta-track {
+    display: flex;
+    width: max-content;
+}
+
+/* Se activa cuando el JS termina de armar la cinta */
+.cinta-track.lista {
+    animation: cinta-mover 40s linear infinite;
+}
+
+.cinta-grupo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Palabras: blancas, en negrita, con sombra suave para que se lean */
+.cinta-grupo span {
+    padding: 0 36px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .28em;
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    white-space: nowrap;
+}
+
+/* Puntos separadores en blanco semitransparente */
+.cinta-grupo .sep {
+    padding: 0;
+    color: rgba(255, 255, 255, .7);
+    font-size: 14px;
+    letter-spacing: 0;
+}
+
+/* Recorre un grupo completo (ancho calculado por el JS) */
+@keyframes cinta-mover {
+    to { transform: translateX(calc(-1 * var(--cinta-ancho, 50%))); }
+}
+
+/* Pausa al pasar el mouse */
+.cinta:hover .cinta-track { animation-play-state: paused; }
+
+/* Celulares */
+@media (max-width: 600px) {
+    .cinta { padding: 7px 0; }      /* antes 12px: más delgada */
+    .cinta-grupo span { padding: 0 22px; font-size: 11px; letter-spacing: .24em; }
+}
+
+/* Sin movimiento si el sistema lo pide */
+@media (prefers-reduced-motion: reduce) {
+    .cinta-track.lista { animation: none; }
+}

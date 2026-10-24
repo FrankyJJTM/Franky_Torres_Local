@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // =========================================================
-    // VALIDACIÓN DEL FORMULARIO DE CONTACTO
-    // =========================================================
     const contactForm = document.getElementById('contactForm');
 
     if (contactForm) {
@@ -13,10 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function mostrarError(input, mensaje) {
             if (!input) return;
+
             const contenedor = input.parentElement;
             if (!contenedor) return;
 
             const errorElement = contenedor.querySelector('.error-message');
+
             if (errorElement) {
                 errorElement.textContent = mensaje;
                 errorElement.classList.toggle('hidden', mensaje === '');
@@ -28,72 +27,104 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function validarTexto(input, nombreCampo) {
             if (!input) return false;
+
             const valor = input.value.trim();
             const soloLetras = /^[A-Za-zÁÉÍÓÚÑÜáéíóúñü\s]+$/;
 
             if (valor === '') {
-                mostrarError(input, `Ingresa tu ${nombreCampo}`);
+                mostrarError(input, Ingresa tu ${nombreCampo});
                 return false;
             }
+
             if (!soloLetras.test(valor)) {
-                mostrarError(input, `El ${nombreCampo} solo debe contener letras`);
+                mostrarError(input, El ${nombreCampo} solo debe contener letras);
                 return false;
             }
+
             mostrarError(input, '');
             return true;
         }
 
         function validarTelefono() {
             if (!telefonoInput) return false;
+
             const telefono = telefonoInput.value.trim();
 
             if (!/^9[0-9]{8}$/.test(telefono)) {
-                mostrarError(telefonoInput, 'El teléfono debe tener 9 dígitos y comenzar con 9');
+                mostrarError(
+                    telefonoInput,
+                    'El teléfono debe tener 9 dígitos y comenzar con 9'
+                );
                 return false;
             }
+
             mostrarError(telefonoInput, '');
             return true;
         }
 
         function validarCorreo() {
             if (!correoInput) return false;
-            const correo = correoInput.value.trim();
-            const emailRegex = /^(?=.*[a-zA-Z])[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            if (!emailRegex.test(correo)) {
-                mostrarError(correoInput, 'El correo debe contener al menos una letra en el usuario');
+            const correo = correoInput.value.trim();
+
+            const emailRegex = /^(?=[^@][a-zA-Z])[a-zA-Z0-9_%+-]+(?:\.[a-zA-Z0-9_%+-]+)@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*\.[a-zA-Z]{2,}$/;
+
+             if (!emailRegex.test(correo)) {
+                mostrarError(
+                    correoInput,
+                    'Ingresa un correo válido que contenga al menos una letra en el usuario'
+                );
                 return false;
             }
+
             mostrarError(correoInput, '');
             return true;
         }
 
         function validarMensaje() {
             if (!mensajeInput) return false;
+
             if (mensajeInput.value.trim() === '') {
                 mostrarError(mensajeInput, 'Ingresa un mensaje');
                 return false;
             }
+
             mostrarError(mensajeInput, '');
             return true;
         }
 
-        // Restricción de entrada en tiempo real (solo letras en nombre/apellido)
+        // Permitir solo letras y espacios en nombres y apellidos.
+        // Convertir la primera letra de cada palabra a mayúscula al salir del campo.
         [nombreInput, apellidoInput].forEach((input) => {
             if (!input) return;
+
             input.addEventListener('input', () => {
-                input.value = input.value.replace(/[^A-Za-zÁÉÍÓÚÑÜáéíóúñü\s]/g, '');
+                input.value = input.value.replace(
+                    /[^A-Za-zÁÉÍÓÚÑÜáéíóúñü\s]/g,
+                    ''
+                );
+            });
+
+            input.addEventListener('blur', () => {
+                input.value = input.value
+                    .trim()
+                    .toLowerCase()
+                    .replace(/(^|\s)[a-záéíóúñü]/g, letra =>
+                        letra.toUpperCase()
+                    );
             });
         });
 
-        // Restricción de entrada en tiempo real (solo números en teléfono)
+        // Permitir solo números y un máximo de 9 dígitos.
         if (telefonoInput) {
             telefonoInput.addEventListener('input', () => {
-                telefonoInput.value = telefonoInput.value.replace(/[^0-9]/g, '').substring(0, 9);
+                telefonoInput.value = telefonoInput.value
+                    .replace(/[^0-9]/g, '')
+                    .substring(0, 9);
             });
         }
 
-        // Validación global al enviar el formulario
+        // Validar todos los campos antes de enviar el formulario.
         contactForm.addEventListener('submit', (event) => {
             const nombreValido = validarTexto(nombreInput, 'nombre');
             const apellidoValido = validarTexto(apellidoInput, 'apellido');
@@ -101,14 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const correoValido = validarCorreo();
             const mensajeValido = validarMensaje();
 
-            const formularioValido = nombreValido && apellidoValido && telefonoValido && correoValido && mensajeValido;
+            const formularioValido =
+                nombreValido &&
+                apellidoValido &&
+                telefonoValido &&
+                correoValido &&
+                mensajeValido;
 
             if (!formularioValido) {
                 event.preventDefault();
             }
         });
 
-        // Control del Modal de Confirmación
+        // Cerrar el modal de éxito.
         const successModal = document.getElementById('successModal');
         const closeModalBtn = document.getElementById('closeSuccessModal');
 
@@ -125,9 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // =========================================================
-    // CONTADOR DE CARACTERES DEL MENSAJE (300 Máx)
-    // =========================================================
+    // CONTADOR DE CARACTERES EN MENSAJE.
     const mensajeInputContador = document.getElementById('mensajeInput');
     const contadorMensaje = document.getElementById('contadorMensaje');
 
@@ -135,9 +169,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const limiteMaximo = 300;
 
         const actualizarContador = () => {
-            const caracteresEscritos = mensajeInputContador.value.length;
-            contadorMensaje.textContent = `${caracteresEscritos}/${limiteMaximo}`;
-            contadorMensaje.classList.toggle('limite-cerca', caracteresEscritos >= limiteMaximo - 20);
+        const caracteresEscritos = mensajeInputContador.value.length;
+
+            contadorMensaje.textContent = ${caracteresEscritos}/${limiteMaximo};
+
+            contadorMensaje.classList.toggle(
+                'limite-cerca',
+                caracteresEscritos >= limiteMaximo - 20
+            );
         };
 
         mensajeInputContador.addEventListener('input', actualizarContador);

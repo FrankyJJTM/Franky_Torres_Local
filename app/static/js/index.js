@@ -114,3 +114,49 @@ document.addEventListener('DOMContentLoaded', () => {
         contadores.forEach((contador) => observer.observe(contador));
     }
 });
+/* ===== CINTA ANIMADA ===== */
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('cintaTrack');
+    if (!track) return;                       // sale si la página no tiene cinta
+
+    const grupoOriginal = track.querySelector('.cinta-grupo');
+    const VELOCIDAD = 60;                     // píxeles por segundo (más = más rápida)
+
+    function armarCinta() {
+        // Quita copias anteriores
+        track.querySelectorAll('[data-clon]').forEach(c => c.remove());
+
+        // Ancho de un grupo de palabras
+        const anchoGrupo = grupoOriginal.getBoundingClientRect().width;
+        if (!anchoGrupo) return;
+
+        // Copias necesarias para cubrir la pantalla (+1 de sobra)
+        const copias = Math.ceil(window.innerWidth / anchoGrupo) + 1;
+
+        for (let i = 0; i < copias; i++) {
+            const clon = grupoOriginal.cloneNode(true);
+            clon.setAttribute('aria-hidden', 'true');
+            clon.setAttribute('data-clon', '');
+            track.appendChild(clon);
+        }
+
+        // Distancia y duración de la animación
+        track.style.setProperty('--cinta-ancho', anchoGrupo + 'px');
+        track.style.animationDuration = (anchoGrupo / VELOCIDAD) + 's';
+        track.classList.add('lista');
+    }
+
+    // Espera las fuentes (cambian el ancho del texto)
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(armarCinta);
+    } else {
+        armarCinta();
+    }
+
+    // Reajusta al cambiar el tamaño de la ventana
+    let espera;
+    window.addEventListener('resize', () => {
+        clearTimeout(espera);
+        espera = setTimeout(armarCinta, 200);
+    });
+});

@@ -4,24 +4,25 @@
 
 {% block content %}
 
-<!-- BANNER SUPERIOR "CONVERSEMOS" -->
+<!-- Banner superior -->
 <section class="bg-emerald-600 text-white py-16 px-4 text-center">
     <div class="max-w-4xl mx-auto space-y-3">
         <h1 class="text-3xl md:text-5xl font-bold font-serif tracking-tight text-emerald-950">
             Conversemos
         </h1>
+
         <p class="text-emerald-900 text-sm md:text-base font-medium">
             Estamos listos para trabajar contigo
         </p>
     </div>
 </section>
 
-<!-- SECCIÓN FORMULARIO E INFORMACIÓN -->
+<!-- Sección de formulario e información -->
 <section class="py-16 bg-emerald-50/50">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
 
-            <!-- TARJETA IZQUIERDA: FORMULARIO -->
+            <!-- Tarjeta izquierda: formulario -->
             <div class="bg-emerald-50/80 rounded-3xl p-8 border border-emerald-200/80 shadow-sm flex flex-col justify-between">
                 <div>
                     <h2 class="text-2xl font-bold text-emerald-950 text-center mb-2">
@@ -29,69 +30,157 @@
                     </h2>
 
                     <p class="text-xs md:text-sm text-emerald-900 text-center leading-relaxed mb-8">
-                        Nos encantaría conocer tus ideas, consultas o propuestas. ¡Escríbenos y te responderemos lo antes posible!
+                        Nos encantaría conocer tus ideas, consultas o propuestas.
+                        ¡Escríbenos y te responderemos lo antes posible!
                     </p>
 
-                    <form id="contactForm" action="{{ url_for('clientes.contacto') }}" method="POST" class="space-y-5" novalidate>
-
-                        <!-- Campo Nombre -->
+                    <form
+                        id="contactForm"
+                        action="{{ url_for('clientes.contacto') }}"
+                        method="POST"
+                        class="space-y-5"
+                        novalidate
+                    >
+                        <!-- Campo: nombres -->
                         <div>
-                            <label class="block font-bold text-emerald-950 text-sm mb-2">
-                                Nombre Completo
+                            <label
+                                for="nombre"
+                                class="block font-bold text-emerald-950 text-sm mb-2"
+                            >
+                                Nombres
                             </label>
-                            <input type="text" name="nombre" required maxlength="50" pattern="[A-Za-zÁÉÍÓÚÑÜáéíóúñü\s]+" title="Solo se permiten letras y espacios" class="w-full bg-slate-200/80 border-none rounded-2xl px-4 py-3 text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none">
+
+                            <input
+                                id="nombre"
+                                type="text"
+                                name="nombre"
+                                placeholder="Ej. Sara Abigail"
+                                required
+                                maxlength="50"
+                                pattern="[A-Za-zÁÉÍÓÚÜáéíóúüÑñ]+([ '-][A-Za-zÁÉÍÓÚÜáéíóúüÑñ]+)*"
+                                title="Ingresa nombres válidos, con letras, tildes y separadores permitidos."
+                                autocomplete="given-name"
+                                class="w-full bg-slate-200/80 border-none rounded-2xl px-4 py-3 text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none"
+                            >
+
                             <p class="error-message hidden text-red-600 text-xs mt-1"></p>
                         </div>
 
-                        <!-- Campo Apellido -->
+                        <!-- Campo: apellidos -->
                         <div>
-                            <label class="block font-bold text-emerald-950 text-sm mb-2">
-                                Apellido Completo
+                            <label
+                                for="apellido"
+                                class="block font-bold text-emerald-950 text-sm mb-2"
+                            >
+                                Apellidos
                             </label>
-                            <input type="text" name="apellido" required maxlength="50" pattern="[A-Za-zÁÉÍÓÚÑÜáéíóúñü\s]+" title="Solo se permiten letras y espacios" class="w-full bg-slate-200/80 border-none rounded-2xl px-4 py-3 text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none">
+
+                            <input
+                                id="apellido"
+                                type="text"
+                                name="apellido"
+                                placeholder="Ej. Huerta Perales"
+                                required
+                                maxlength="50"
+                                pattern="[A-Za-zÁÉÍÓÚÜáéíóúüÑñ]+([ '-][A-Za-zÁÉÍÓÚÜáéíóúüÑñ]+)*"
+                                title="Ingresa apellidos válidos, con letras, tildes y separadores permitidos."
+                                autocomplete="family-name"
+                                class="w-full bg-slate-200/80 border-none rounded-2xl px-4 py-3 text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none"
+                            >
+
                             <p class="error-message hidden text-red-600 text-xs mt-1"></p>
                         </div>
 
-                        <!-- Campo Teléfono -->
+                        <!-- Campo: teléfono -->
                         <div>
-                            <label class="block font-bold text-emerald-950 text-sm mb-2">
+                            <label
+                                for="telefono"
+                                class="block font-bold text-emerald-950 text-sm mb-2"
+                            >
                                 Teléfono
                             </label>
-                            <input type="text" name="telefono" required inputmode="numeric" maxlength="9" pattern="9[0-9]{8}" title="Ingresa un número de celular de 9 dígitos que empiece con 9" class="w-full bg-slate-200/80 border-none rounded-2xl px-4 py-3 text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none">
+
+                            <input
+                                id="telefono"
+                                type="tel"
+                                name="telefono"
+                                placeholder="Ej. 987654321"
+                                required
+                                inputmode="numeric"
+                                maxlength="9"
+                                pattern="9[0-9]{8}"
+                                title="Ingresa un número de celular de 9 dígitos que empiece con 9."
+                                autocomplete="tel-national"
+                                class="w-full bg-slate-200/80 border-none rounded-2xl px-4 py-3 text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none"
+                            >
+
                             <p class="error-message hidden text-red-600 text-xs mt-1"></p>
                         </div>
 
-                        <!-- Campo Correo -->
+                        <!-- Campo: correo electrónico -->
                         <div>
-                            <label class="block font-bold text-emerald-950 text-sm mb-2">
+                            <label
+                                for="correo"
+                                class="block font-bold text-emerald-950 text-sm mb-2"
+                            >
                                 Correo
                             </label>
-                            <input type="email" name="correo" required pattern="[^\s@]+@[^\s@]+\.[^\s@]+" title="Ingresa un correo válido, ej: nombre@dominio.com" class="w-full bg-slate-200/80 border-none rounded-2xl px-4 py-3 text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none">
+
+                            <input
+                                id="correo"
+                                type="email"
+                                name="correo"
+                                placeholder="Ej. usuario@gmail.com"
+                                required
+                                maxlength="254"
+                                autocomplete="email"
+                                title="Ingresa un correo válido, por ejemplo nombre@dominio.com."
+                                class="w-full bg-slate-200/80 border-none rounded-2xl px-4 py-3 text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none"
+                            >
+
                             <p class="error-message hidden text-red-600 text-xs mt-1"></p>
                         </div>
 
-                        <!-- Campo Mensaje -->
+                        <!-- Campo: mensaje -->
                         <div>
-                            <label class="block font-bold text-emerald-950 text-sm mb-2">
+                            <label
+                                for="mensajeInput"
+                                class="block font-bold text-emerald-950 text-sm mb-2"
+                            >
                                 Mensaje
                             </label>
-                            <textarea id="mensajeInput" name="mensaje" rows="4" required maxlength="300" class="w-full bg-slate-200/80 border-none rounded-2xl px-4 py-3 text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none resize-none"></textarea>
-                            <span id="contadorMensaje" class="contador-mensaje">0/300</span>
+
+                            <textarea
+                                id="mensajeInput"
+                                name="mensaje"
+                                placeholder="Escribe tu consulta aquí..."
+                                rows="4"
+                                required
+                                maxlength="300"
+                                class="w-full bg-slate-200/80 border-none rounded-2xl px-4 py-3 text-slate-800 focus:ring-2 focus:ring-emerald-600 outline-none resize-none"
+                            ></textarea>
+
+                            <span id="contadorMensaje" class="contador-mensaje">
+                                0/300
+                            </span>
+
                             <p class="error-message hidden text-red-600 text-xs mt-1"></p>
                         </div>
 
-                        <!-- Botón Enviar -->
+                        <!-- Botón de envío -->
                         <div class="pt-2">
-                            <button type="submit" class="w-full bg-emerald-400 hover:bg-emerald-500 text-emerald-950 font-bold text-sm py-3.5 rounded-2xl transition shadow-sm">
+                            <button
+                                type="submit"
+                                class="w-full bg-emerald-400 hover:bg-emerald-500 text-emerald-950 font-bold text-sm py-3.5 rounded-2xl transition shadow-sm"
+                            >
                                 Enviar mensaje
                             </button>
                         </div>
-
                     </form>
                 </div>
             </div>
 
-            <!-- TARJETA DERECHA: INFORMACIÓN Y MAPA -->
+            <!-- Tarjeta derecha: información y mapa -->
             <div class="bg-emerald-50/80 rounded-3xl p-8 border border-emerald-200/80 shadow-sm flex flex-col space-y-6">
                 <div class="space-y-4">
                     <h2 class="text-2xl font-bold text-emerald-950 mb-2">
@@ -116,26 +205,28 @@
                     </div>
                 </div>
 
-                <!-- MAPA INTERACTIVO -->
+                <!-- Mapa interactivo -->
                 <div class="rounded-2xl overflow-hidden border border-emerald-200 shadow-sm h-64">
                     <iframe
                         src="https://www.google.com/maps?q=Calle+El+Maestro+610,+Motupe,+Lambayeque,+Peru&output=embed"
                         class="w-full h-full"
-                        style="border:0;"
-                        allowfullscreen=""
+                        style="border: 0;"
+                        allowfullscreen
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"
-                        title="Ubicación Agrofrutos - Calle El Maestro 610, Motupe, Lambayeque">
-                    </iframe>
+                        title="Ubicación de Agrofrutos - Calle El Maestro 610, Motupe, Lambayeque"
+                    ></iframe>
                 </div>
-
             </div>
         </div>
     </div>
 </section>
 
-<!-- MODAL DE CONFIRMACIÓN DE ENVÍO -->
-<div id="successModal" class="{% if not mensajeEnviado %}hidden{% endif %} fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+<!-- Modal de confirmación de envío -->
+<div
+    id="successModal"
+    class="{% if not mensajeEnviado %}hidden{% endif %} fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4"
+>
     <div class="bg-white rounded-3xl p-8 max-w-sm w-full text-center shadow-xl transform transition-all">
 
         <div class="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
@@ -147,18 +238,23 @@
         </h3>
 
         <p class="text-sm text-slate-600 leading-relaxed mb-6">
-            Gracias por comunicarte con Agrofrutos. Pronto nos comunicaremos contigo.
+            Gracias por comunicarte con Agrofrutos.
+            Pronto nos comunicaremos contigo.
         </p>
 
-        <button id="closeSuccessModal" type="button" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm py-3 rounded-2xl transition">
+        <button
+            id="closeSuccessModal"
+            type="button"
+            class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm py-3 rounded-2xl transition"
+        >
             Cerrar
         </button>
-
     </div>
 </div>
 
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/form.js') }}"></script>
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
 {% endblock %}
